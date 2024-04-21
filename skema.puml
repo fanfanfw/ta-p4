@@ -1,0 +1,92 @@
+@startuml
+object users{
+==  id
+== string->name
+== string->username unique (untuk pengisian nim dan nidn)
+==    string->password
+==    enum->role = "mahasiswa, dosen, admin"
+==    remeberToken
+==    timestamps
+}
+
+
+object matakuliah{
+==id
+==program_studi_id (foreignId)
+==string->kode_matakuliah unique
+==string->name
+==string->sks
+==string->semester
+string->program_studi unique (from program_studi)
+}
+
+object program_studi{
+==id
+==string->name unique
+}
+
+object jadwal_dosen{
+== id
+== user_id (foreignId)
+== hari_id (foreignId)
+== matakuliah_id (foreignId)
+== program_studi (foreignId)
+    string->program_studi (from program_studi)
+    string->kode_matakuliah (from matakuliah)
+    string->nama_dosen (from users)
+    string->nama_matakuliah (from matakuliah)
+    string->sks (from matakuliah)
+    string->semester (from matakuliah)
+    string->hari (from hari)
+    string->jam (from hari)
+}
+
+object jadwal_mahasiswa{
+==id
+== user_id (foreignId)
+== hari_id (foreignId)
+== matakuliah_id (foreignId)
+== program_studi (foreignId)
+    string->program_studi (from program_studi)
+    string->kode_matakuliah (from matakuliah)
+    string->nama_dosen (from users)
+    string->nama_matakuliah (from matakuliah)
+    string->sks (from matakuliah)
+    string->semester (from matakuliah)
+    string->hari (from hari)
+    string->jam (from hari)
+
+}
+
+object ruangan{
+==    id
+==    string->name unique
+==    int->kapasitas
+}
+
+object kelas{
+== id
+==user_id (foreignId)
+==matakuliah_id (foreignId)
+==program_studi_id (foreignId)
+==ruangan_id (foreignId)
+string->kode_matakuliah (from matakuliah)
+string->matakuliah (form matakuliah)
+string->dosen (nama_dosen)
+== enum->kelas = "Reguler, Karyawan, Eksekutif"
+string->program_studi (from program_studi)
+int->kapasitas (from ruangan)
+== timestamps()
+}
+
+
+
+object hari{
+==id
+==enum->name
+==time()->jam
+}
+
+users-->jadwal_dosen
+program_studi->matakuliah
+@enduml
