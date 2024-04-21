@@ -21,22 +21,28 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        
-        User::create([
-            'name' => 'Fan Fan',
-            'username' => 'admin',
-            'password' => bcrypt('123456')
-        ]);
-        Mahasiswa::create([
-            'name' => 'Firgiawan',
-            'nim' => '1222624',
-            'password' => bcrypt('123456')
-        ]);
-        Dosen::create([
-            'name' => 'Sandhika',
-            'nidn' => '12226244',
-            'password' => bcrypt('123456')
-        ]);
-        
+        $userData = [
+            [
+                'name' => 'Fan Fan Firgiawan',
+                'username' => '1222624',
+                'password' => bcrypt('123456'),
+                'role' => 'mahasiswa'
+            ],
+            [
+                'name' => 'Mina Ismu',
+                'username' => '12226244',
+                'password' => bcrypt('123456'),
+                'role' => 'dosen'
+            ],[
+                'name' => 'admin',
+                'username' => 'admin',
+                'password' => bcrypt('123456'),
+                'role' => 'admin'
+            ],
+        ];
+        foreach($userData as $key => $val)
+        {
+            User::create($val);
+        }
     }
 }

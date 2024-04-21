@@ -15,19 +15,19 @@
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
 <div class="wrapper">
-  
+
   {{-- Navbar --}}
   @include('partials.navbar')
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    
-    @if (Auth::check(users))
-    @include('pages.admin.dashboard')
-@endif
 
-@if (Auth::check(mahasiswa))
-    @include('pages.mahasiswa.dashboard')
-@endif
+        @if(Auth::user()->role == 'admin')
+            @include('pages.admin.dashboard')
+        @endif
+        @if (Auth::user()->role == 'mahasiswa')
+            @include('pages.mahasiswa.dashboard')
+        @endif
+
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->

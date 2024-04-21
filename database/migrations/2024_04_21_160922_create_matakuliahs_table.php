@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('matakuliahs', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('program_studi_id')->constrained('program_studis');
+            $table->string('kode_matakuliah');
             $table->string('name');
-            $table->string('username')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->enum('role',['mahasiswa','dosen','admin'])->default('mahasiswa');
-            $table->rememberToken();
+            $table->integer('sks');
+            $table->integer('semester');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('matakuliahs');
     }
 };

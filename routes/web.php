@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminController;
 use App\Http\Middleware\UserAkses;
 /*
 |--------------------------------------------------------------------------
@@ -28,9 +28,9 @@ return redirect('/main');
 });
 
 Route::middleware(['auth'])->group(function(){
-Route::get('/main', [AdminController::class, 'index']);
-Route::get('/main/admin', [AdminController::class, 'admin']);
-Route::get('/main/mahasiswa', [AdminController::class, 'mahasiswa']);
-Route::get('/main/dosen', [AdminController::class, 'dosen']);
+Route::get('/main', [SessionController::class, 'index']);
+Route::get('/main/admin', [SessionController::class, 'admin'])->middleware('userAkses:admin');
+Route::get('/main/mahasiswa', [SessionController::class, 'mahasiswa'])->middleware('userAkses:mahasiswa');
+Route::get('/main/dosen', [SessionController::class, 'dosen'])->middleware('userAkses:dosen');
 Route::get('/logout', [LoginController::class, 'logout']);
 });

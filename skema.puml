@@ -25,6 +25,12 @@ object program_studi{
 ==string->name unique
 }
 
+object jadwal_dosen_user{
+==di
+==user_id
+
+}
+
 object jadwal_dosen{
 == id
 == user_id (foreignId)
@@ -89,4 +95,5 @@ object hari{
 
 users-->jadwal_dosen
 program_studi->matakuliah
+
 @enduml
