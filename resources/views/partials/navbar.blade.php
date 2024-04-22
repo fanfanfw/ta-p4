@@ -37,7 +37,7 @@
           <img src="{{ asset('lte/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block">{{ auth()->user()->name }}</a>
         </div>
       </div>
 
@@ -47,15 +47,42 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Dashboard
-              </p>
-            </a>
-            {{-- logout --}}
-            </ul>
-          </li>
+               <a href="{{ auth()->check() ? (auth()->user()->role == 'admin' ? '/pages/admin/dashboard' : (auth()->user()->role == 'mahasiswa' ? '/pages/mahasiswa/dashboard' : '/pages/dosen/dashboard')) : '/login' }}" class="nav-link"> <!-- Tindakan untuk pengguna yang belum login, misalnya redirect ke halaman login -->
+                {{-- @endif --}}
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                   Dashboard
+                 </p>
+                 </a>
+            </li>
+
+            @if(auth()->check() && auth()->user()->role == 'admin')
+                    <li class="nav-item">
+                        <a href="/pages/admin/dosen" class="nav-link">
+                            <i class="nav-icon fas fa-users"></i>
+                            <p>
+                                Dosen
+                            </p>
+                        </a>
+                    </li>
+            @endif
+
+            @if(auth()->check() && auth()->user()->role == 'admin')
+                    <li class="nav-item">
+                        <a href="/pages/admin/program" class="nav-link">
+                            <i class="nav-icon fas fa-thumbtack"></i>
+                            <p>
+                                Program Studi
+                            </p>
+                        </a>
+                    </li>
+            @endif
+
+            <li class="nav-item">
+              <a href=""></a>
+            </li>
+          </ul>
+          {{-- logout --}}
           <ul class="nav nav-pills nav-sidebar flex-column mt-5" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-item">
                 <a href="/logout" class="nav-link">
@@ -65,9 +92,8 @@
                     </p>
                 </a>
             </li>
-        </ul>
+          </ul>
         {{-- /.logout> --}}
-        </ul>
       </nav>
     </div>
     <!-- /.sidebar -->

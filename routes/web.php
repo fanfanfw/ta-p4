@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DosenController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\SessionController;
+use App\Http\Controllers\MahasiswaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\UserAkses;
 /*
@@ -14,23 +16,32 @@ use App\Http\Middleware\UserAkses;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 Route::middleware(['guest'])->group(function(){
     Route::get('/', [LoginController::class, 'index'])->name('login');
     Route::post('/', [LoginController::class, 'login']);
 });
 
 Route::get('/home', function(){
-return redirect('/main');
+    if (auth()->check()) {
+        if (auth()->user()->role === 'admin') {
+            return redirect('/pages/admin/dashboard');
+        } elseif (auth()->user()->role === 'mahasiswa') {
+            return redirect('/pages/mahasiswa/dashboard');
+        } elseif (auth()->user()->role === 'dosen') {
+            return redirect('/pages/dosen/dashboard');
+        }
+    }
+    return redirect('/login');
 });
 
 Route::middleware(['auth'])->group(function(){
-Route::get('/main', [SessionController::class, 'index']);
-Route::get('/main/admin', [SessionController::class, 'admin'])->middleware('userAkses:admin');
-Route::get('/main/mahasiswa', [SessionController::class, 'mahasiswa'])->middleware('userAkses:mahasiswa');
-Route::get('/main/dosen', [SessionController::class, 'dosen'])->middleware('userAkses:dosen');
+// Route::get('/main', [SessionController::class, 'index']);
+Route::get('/pages/admin/dashboard', [AdminController::class, 'index'])->middleware('userAkses:admin');
+Route::get('/pages/admin/dosen', [AdminController::class, 'dosen'])->middleware('userAkses:admin');
+Route::get('/pages/admin/program', [AdminController::class, 'program'])->middleware('userAkses:admin');
+Route::get('/pages/mahasiswa/dashboard', [MahasiswaController::class, 'index'])->middleware('userAkses:mahasiswa');
+Route::get('/pages/dosen/dashboard', [DosenController::class, 'index'])->middleware('userAkses:dosen');
 Route::get('/logout', [LoginController::class, 'logout']);
+
+
 });

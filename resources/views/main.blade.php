@@ -11,6 +11,12 @@
   <link rel="stylesheet" href="{{ asset('lte/plugins/fontawesome-free/css/all.min.css')}}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('lte/dist/css/adminlte.min.css')}}">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="{{ asset('lte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
+  <link rel="stylesheet" href="{{ asset('lte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+  <link rel="stylesheet" href="{{ asset('lte/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{{ asset('lte/dist/css/adminlte.min.css') }}">
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -20,24 +26,9 @@
   @include('partials.navbar')
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-
-        @if(Auth::user()->role == 'admin')
-            @include('pages.admin.dashboard')
-        @endif
-        @if (Auth::user()->role == 'mahasiswa')
-            @include('pages.mahasiswa.dashboard')
-        @endif
-
-    <!-- /.content -->
+    @yield('container')
   </div>
   <!-- /.content-wrapper -->
-
-  <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.2.0
-    </div>
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
-  </footer>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -47,11 +38,28 @@
 </div>
 <!-- ./wrapper -->
 
+
+@yield('kode')
 <!-- jQuery -->
 <script src="{{ asset('lte/plugins/jquery/jquery.min.js')}}"></script>
 <!-- Bootstrap 4 -->
 <script src="{{ asset('lte/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<!-- DataTables  & Plugins -->
+<script src="{{ asset('lte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+<script src="{{ asset('lte/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+<script src="{{ asset('lte/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{ asset('lte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+<script src="{{ asset('lte/plugins/datatables-buttons/js/dataTables.buttons.min.js')}}"></script>
+<script src="{{ asset('lte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js')}}"></script>
+<script src="{{ asset('lte/plugins/jszip/jszip.min.js')}}"></script>
+<script src="{{ asset('lte/plugins/pdfmake/pdfmake.min.js')}}"></script>
+<script src="{{ asset('lte/plugins/pdfmake/vfs_fonts.js')}}"></script>
+<script src="{{ asset('lte/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
+<script src="{{ asset('lte/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
+<script src="{{ asset('lte/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('lte/dist/js/adminlte.min.js')}}"></script>
+<!-- bs-custom-file-input -->
+<script src="{{ asset('lte/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
 </body>
 </html>

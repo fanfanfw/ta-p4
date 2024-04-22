@@ -37,7 +37,7 @@
       <form action="{{ route('login') }}" method="post">
         @csrf
         <div class="input-group mb-3">
-          <input type="text" name="username" class="form-control" placeholder="NIM / NIDN">
+          <input type="text" name="username" class="form-control" placeholder="NIM / NIDN" value="{{ old('username') }}">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>

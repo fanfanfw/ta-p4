@@ -1,4 +1,8 @@
-<!-- Content Header (Page header) -->
+@extends('main')
+
+@section('container')
+    
+{{-- !-- Content Header (Page header) --> --}}
 <section class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
@@ -150,3 +154,4 @@
     <!-- /.card -->
 
   </section>
+  @endsection
