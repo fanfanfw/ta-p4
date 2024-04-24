@@ -77,6 +77,28 @@
                         </a>
                     </li>
             @endif
+            
+            @if(auth()->check() && auth()->user()->role == 'admin')
+                    <li class="nav-item">
+                        <a href="/pages/admin/matakuliah" class="nav-link">
+                            <i class="nav-icon fas fa-thumbtack"></i>
+                            <p>
+                                Matakuliah
+                            </p>
+                        </a>
+                    </li>
+            @endif
+
+            @if(auth()->check() && auth()->user()->role == 'admin')
+                    <li class="nav-item">
+                        <a href="/pages/admin/jadwal" class="nav-link">
+                            <i class="nav-icon fas fa-thumbtack"></i>
+                            <p>
+                                Jadwal
+                            </p>
+                        </a>
+                    </li>
+            @endif
 
             <li class="nav-item">
               <a href=""></a>

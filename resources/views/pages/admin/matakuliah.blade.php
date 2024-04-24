@@ -8,7 +8,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Program Studi</h3>
+                <h3 class="card-title">Matakuliah</h3>
                 <br>
 
                 <!-- Tombol untuk membuka modal -->
@@ -82,23 +82,33 @@
                   <thead>
                   <tr>
                     <th>No. </th>
-                    <th style="width: 80%">Program Studi</th>
+                    <th>Kode Matakuliah</th>
+                    <th>Matakuliah</th>
+                    <th>Nama Dosen</th>
+                    <th>Program Studi</th>
+                    <th>SKS</th>
+                    <th>Semester</th>
                     <th>Aksi</th>
                   </tr>
                   </thead>
                   <tbody>
-                    @foreach ($program as $item)
+                    @foreach ($matakuliah as $item)
                         <tr>
-                          <td>{{ $item->id }}</td>
-                          <td>{{ $item->name }}</td>
-                          <td>
-                            <button class="btn btn-warning btn-sm float mt-3" data-toggle="modal" data-target="#modalEditData"><i class="fas fa-edit"></i> Ubah</button>
-                            <button class="btn btn-danger btn-sm float mt-3" data-toggle="modal"><i class="fas fa-delete"></i> Hapus</button>
-                            {{-- {{ route('program.edit', $item->id) }} --}}
-                          </td>
+                            <td>{{ $item->id }}</td>
+                            <td>{{ $item->kode_matakuliah }}</td>
+                            <td>{{ $item->name }}</td>
+                            <td>{{ $item->namaDosen->name }}</td>
+                            <td>{{ $item->programStudi->name }}</td>
+                            <td>{{ $item->sks }}</td>
+                            <td>{{ $item->semester }}</td>
+                            <td>
+                                <button class="btn btn-warning btn-sm float mt-3" data-toggle="modal" data-target="#modalEditData"><i class="fas fa-edit"></i> Ubah</button>
+                                <button class="btn btn-danger btn-sm float mt-3" data-toggle="modal"><i class="fas fa-delete"></i> Hapus</button>
+                                {{-- {{ route('program.edit', $item->id) }} --}}
+                            </td>
                         </tr>
                     @endforeach
-                  </tbody>
+                </tbody>                
                 </table>
               </div>
               <!-- /.card-body -->
@@ -115,20 +125,6 @@
       </div>
       <!-- /.container-fluid -->
     </section>
-    <!-- /.content -->
-  <!-- /.content-wrapper -->
-  {{-- <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.2.0
-    </div>
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
-  </footer> --}}
-
-  <!-- Control Sidebar -->
-  {{-- <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside> --}}
-  <!-- /.control-sidebar -->
 </div>
 @endsection
 

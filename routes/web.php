@@ -38,7 +38,15 @@ Route::middleware(['auth'])->group(function(){
 // Route::get('/main', [SessionController::class, 'index']);
 Route::get('/pages/admin/dashboard', [AdminController::class, 'index'])->middleware('userAkses:admin');
 Route::get('/pages/admin/dosen', [AdminController::class, 'dosen'])->middleware('userAkses:admin');
-Route::get('/pages/admin/program', [AdminController::class, 'program'])->middleware('userAkses:admin');
+Route::get('/pages/admin/program', [AdminController::class, 'program'])->name('admin.program')->middleware('userAkses:admin');
+Route::post('/pages/admin/program', [AdminController::class, 'programstore'])->name('program.create')->middleware('userAkses:admin');
+Route::post('/pages/admin/program/{id}', [AdminController::class, 'programedit'])->name('program.edit')->middleware('userAkses:admin');
+
+Route::get('/pages/admin/matakuliah', [AdminController::class, 'matakuliah'])->name('admin.matakuliah')->middleware('userAkses:admin');
+
+Route::get('/pages/admin/jadwal', [AdminController::class, 'jadwalkuliah'])->name('admin.jadwalkuliah')->middleware('userAkses:admin');
+
+
 Route::get('/pages/mahasiswa/dashboard', [MahasiswaController::class, 'index'])->middleware('userAkses:mahasiswa');
 Route::get('/pages/dosen/dashboard', [DosenController::class, 'index'])->middleware('userAkses:dosen');
 Route::get('/logout', [LoginController::class, 'logout']);
