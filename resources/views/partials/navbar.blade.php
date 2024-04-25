@@ -100,6 +100,30 @@
                     </li>
             @endif
 
+            {{-- Mahasiswa --}}
+            @if(auth()->check() && auth()->user()->role == 'mahasiswa')
+                    <li class="nav-item">
+                        <a href="/pages/mahasiswa/matakuliah" class="nav-link">
+                            <i class="nav-icon fas fa-book"></i>
+                            <p>
+                                Matakuliah
+                            </p>
+                        </a>
+                    </li>
+            @endif
+
+            {{-- Dosen --}}
+            @if(auth()->check() && auth()->user()->role == 'dosen')
+                    <li class="nav-item">
+                        <a href="/pages/dosen/matakuliah" class="nav-link">
+                            <i class="nav-icon fas fa-book"></i>
+                            <p>
+                                Matakuliah
+                            </p>
+                        </a>
+                    </li>
+            @endif
+
             <li class="nav-item">
               <a href=""></a>
             </li>

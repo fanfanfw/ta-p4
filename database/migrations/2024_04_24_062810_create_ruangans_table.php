@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('ruangans', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('kapasitas');
+            $table->integer('kapasitas');
             $table->timestamps();
         });
     }

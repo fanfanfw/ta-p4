@@ -24,5 +24,9 @@ class Matakuliah extends Model
         {
             return $this->hasMany(JadwalKuliah::class, 'matakuliah_id');
         }
+        public function userMatakuliah()
+    {
+        return $this->hasMany(UserMatakuliah::class, 'matakuliah_id');
+    }
 
 }

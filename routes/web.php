@@ -48,7 +48,11 @@ Route::get('/pages/admin/jadwal', [AdminController::class, 'jadwalkuliah'])->nam
 
 
 Route::get('/pages/mahasiswa/dashboard', [MahasiswaController::class, 'index'])->middleware('userAkses:mahasiswa');
+Route::get('/pages/mahasiswa/matakuliah', [MahasiswaController::class, 'matakuliah'])->middleware('userAkses:mahasiswa');
+
+
 Route::get('/pages/dosen/dashboard', [DosenController::class, 'index'])->middleware('userAkses:dosen');
+Route::get('/pages/dosen/matakuliah', [DosenController::class, 'matakuliah'])->middleware('userAkses:dosen');
 Route::get('/logout', [LoginController::class, 'logout']);
 
 
