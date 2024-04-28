@@ -9,6 +9,10 @@ class ProgramStudi extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name',];
+
+    protected $table = 'program_studis';
+
     public function mataKuliahs()
     {
         return $this->hasMany(MataKuliah::class, 'program_studi_id');

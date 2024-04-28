@@ -53,10 +53,11 @@
                       <option value="6">Semester 6</option>
                       <option value="7">Semester 7</option>
                       <option value="8">Semester 8</option>
+                      <option value="Semua">Semua</option>
                     </select>
                   </div>
-                  <table id="example2" class="table table-bordered table-hover">
-                      <thead>
+                  <table id="semester" name="semester" class="table table-bordered table-hover">
+                    <thead>
                           <tr>
                               <th>No</th>
                               <th>Kode Matakuliah</th>
@@ -64,14 +65,17 @@
                               <th>SKS</th>
                               <th>Semester</th>
                               <th>Program Studi</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          @foreach ($usermatakuliah as $matakuliah)
-                          @if ($matakuliah->usermatakuliah->semester == '1')
+                            </tr>
+                          </thead>
+                          <tbody>
+                            @php
+                        $counter = 1
+                        @endphp
+                        @foreach ($usermatakuliah as $matakuliah)
+                        @if ($matakuliah->usermatakuliah->semester == '1')
                                   <tr>
                                       <td>
-                                           {{ $matakuliah->usermatakuliah->id}}
+                                        {{ $counter++ }}
                                       </td>
                                       <td>
                                            {{ $matakuliah->usermatakuliah->kode_matakuliah }}
@@ -121,4 +125,20 @@
     <!-- /.card -->
     
   </section>
+  <script>
+    document.getElementById('semester').addEventListener('change', function() {
+        var selectedSemester = this.value;
+        var rows = document.querySelectorAll('#semester tbody tr');
+    
+        rows.forEach(function(row) {
+            var semester = row.querySelector('td:nth-child(5)').textContent.trim();
+            if (semester === selectedSemester || selectedSemester === 'Semua') {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    });
+    </script>
+
   @endsection

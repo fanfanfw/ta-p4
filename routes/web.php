@@ -4,8 +4,10 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\ProgramController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Middleware\UserAkses;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,10 +39,12 @@ Route::get('/home', function(){
 Route::middleware(['auth'])->group(function(){
 // Route::get('/main', [SessionController::class, 'index']);
 Route::get('/pages/admin/dashboard', [AdminController::class, 'index'])->middleware('userAkses:admin');
-Route::get('/pages/admin/dosen', [AdminController::class, 'dosen'])->middleware('userAkses:admin');
-Route::get('/pages/admin/program', [AdminController::class, 'program'])->name('admin.program')->middleware('userAkses:admin');
-Route::post('/pages/admin/program', [AdminController::class, 'programstore'])->name('program.create')->middleware('userAkses:admin');
-Route::post('/pages/admin/program/{id}', [AdminController::class, 'programedit'])->name('program.edit')->middleware('userAkses:admin');
+
+
+Route::resource('program', ProgramController::class)->only(['index', 'store', 'update', 'destroy'])->middleware('userAkses:admin');
+Route::resource('user', UserController::class)->only(['index', 'store', 'update', 'destroy'])->middleware('userAkses:admin');
+
+
 
 Route::get('/pages/admin/matakuliah', [AdminController::class, 'matakuliah'])->name('admin.matakuliah')->middleware('userAkses:admin');
 

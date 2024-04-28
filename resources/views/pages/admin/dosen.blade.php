@@ -8,7 +8,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Data Dosen</h3>
+                <h3 class="card-title">Data User Dosen & Mahasiswa</h3>
                 <br>
 
                 <!-- Tombol untuk membuka modal -->
@@ -27,54 +27,126 @@
                           </button>
                         </div>
                         <div class="modal-body">
-              <!-- /.card-header -->
-              <!-- form start -->
-              <form>
-                  <div class="form-group">
-                    <label for="nama">Nama Dosen:</label>
-                    <input type="text" class="form-control" id="inputnama" placeholder="Masukan Nama">
-                  </div>
-                  <div class="form-group"> 
-                    <label for="nidn">NIDN:</label>
-                    <input type="text" class="form-control" id="inputusername" placeholder="Masukan NIDN">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                  </div>
-                  <div class="form-group">
-                    <label for="status">Program Studi:</label>
-                    <select class="form-control" id="inputstatus">
-                      <option value="aktif">Aktif</option>
-                      <option value="tidak aktif">Tidak Aktif</option>
-                    </select>
-                  </div>
-                <!-- /.card-body -->
+                          <!-- /.card-header -->
+                          <!-- form start -->
+                        <form action="/pages/admin/dosen" method="POST">
+                          @csrf
+                            <div class="form-group">
+                              <label for="nama">Nama Dosen:</label>
+                              <input type="text" class="form-control" id="inputnama"  name="name" value="{{ old('name') }}" placeholder="Masukan Nama">
+                              @error ('name')
+                              <div class="invalid-feedback">
+                                {{ $message }}
+                              </div>
+                              @enderror
+                            </div>
+                            <div class="form-group"> 
+                              <label for="nidn">NIDN:</label>
+                              <input type="text" class="form-control" id="inputusername" name="username" placeholder="Masukan NIDN">
+                              @error ('username')
+                              <div class="invalid-feedback">
+                                {{ $message }}
+                              </div>
+                              @enderror
+                            </div>
+                            <div class="form-group">
+                              <label for="exampleInputPassword1">Password:</label>
+                              <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                              @error ('password')
+                              <div class="invalid-feedback">
+                                {{ $message }}
+                              </div>
+                              @enderror
+                            </div>
+                            <div class="form-group">
+                              <label for="status">Role:</label>
+                              <select class="form-control select2" id="role" name="role">
+                                <option value="dosen">Dosen</option>
+                                <option value="mahasiswa">Mahasiswa</option>
+                            </select>
+                            </div>
+                         <!-- /.card-body -->
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                          <button type="button" class="btn btn-primary">Simpan</button>
+                          <button type="submit" class="btn btn-primary">Buat</button>
+                        </form>
                         </div>
                       </div>
                     </div>
                   </div>
-
-                
+                  <!-- Modal untuk mengedit data -->
+                <div class="modal fade" id="modalEditData" tabindex="-1" role="dialog" aria-labelledby="modalEditDataLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="modalEditDataLabel">Edit Data Dosen</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <!-- Form untuk mengedit data -->
+                        <form action="/pages/admin/dosen/edit/{{ $user->id }}" method="POST">
+                          @csrf
+                          <div class="form-group">
+                            <label for="editnama">Nama Dosen:</label>
+                            <input type="text" class="form-control" id="editnama" name="edit_name" value="{{ $user->name }}" placeholder="Masukan Nama">
+                          </div>
+                          <div class="form-group">
+                            <label for="editnidn">NIDN:</label>
+                            <input type="text" class="form-control" id="editnidn" name="edit_username" value="{{ $user->username }}" placeholder="Masukan NIDN">
+                          </div>
+                          <div class="form-group">
+                            <label for="editrole">Role:</label>
+                            <select class="form-control select2" id="editrole" name="edit_role">
+                              <option value="dosen" @if($user->role == 'dosen') selected @endif>Dosen</option>
+                              <option value="mahasiswa" @if($user->role == 'mahasiswa') selected @endif>Mahasiswa</option>
+                            </select>
+                          </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table id="example2" class="table table-bordered table-hover">
+                <table id="example1" class="table table-bordered table-hover">
                   <thead>
                   <tr>
-                    <th>Rendering engine</th>
-                    <th>Browser</th>
-                    <th>Platform(s)</th>
-                    <th>Engine version</th>
-                    <th>CSS grade</th>
+                    <th>No</th>
+                    <th>Nama Dosen</th>
+                    <th>NIDN</th>
+                    <th>Role</th>
+                    <th>Aksi</th>
                   </tr>
                   </thead>
                   <tbody>
-
+                    @php
+                        $counter = 1;
+                    @endphp
+                    @foreach ($user as $item)
+                    @if ($item->role == 'mahasiswa' || $item->role == 'dosen')
+                         
+                     <tr>
+                       <td>{{ $counter++ }}</td>
+                      <td>{{ $item->name }}</td>
+                      <td>{{ $item->username }}</td>
+                      <td>{{ $item->role }}</td>
+                      <td>
+                        <button class="btn btn-warning btn-sm float" data-toggle="modal" data-target="#modalEditData"><i class="fas fa-edit"></i> Ubah</button>
+                        <button class="btn btn-danger btn-sm float" data-toggle="modal"><i class="fas fa-delete"></i> Hapus</button>
+                        
+                      </td>
+                    </tr>
+                        
+                  @endif 
+                    @endforeach
                   </tbody>
                 </table>
               </div>
@@ -110,25 +182,4 @@
 @endsection
 
 <!-- ./wrapper -->
-@section('kode')
-<script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
-$(function () {
-  bsCustomFileInput.init();
-});
-</script>
-@endsection
+<!-- Page specific script -->

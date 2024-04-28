@@ -27,7 +27,7 @@ class LoginController extends Controller
        // Coba autentikasi pada tabel user terlebih dahulu
         $infologin = [
             'username'=>$request->username,
-            'password'=>$request->password
+            'password'=> $request->password
         ];
 
         if (Auth::attempt($infologin)) {

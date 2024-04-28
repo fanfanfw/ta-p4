@@ -53,9 +53,25 @@
                       <option value="6">Semester 6</option>
                       <option value="7">Semester 7</option>
                       <option value="8">Semester 8</option>
+                      <option value="Semua">Semua</option>
                     </select>
                   </div>
-                  <table id="example2" class="table table-bordered table-hover">
+                  {{-- <div class="card-tools">
+                    
+                    
+                    
+                    <div class="input-group input-group-sm" style="width: 150px;">
+                      <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+  
+                      <div class="input-group-append">
+                        <button type="submit" class="btn btn-default">
+                          <i class="fas fa-search"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div> --}}
+                  <table id="semester" name="semester" class="table table-bordered table-hover">
                       <thead>
                           <tr>
                               <th>No</th>
@@ -68,11 +84,14 @@
                           </tr>
                       </thead>
                       <tbody>
+                        @php
+                        $counter = 1
+                        @endphp
                           @foreach ($usermatakuliah as $matakuliah)
                           @if ($matakuliah->usermatakuliah->semester == '1')
                                   <tr>
                                       <td>
-                                           {{ $matakuliah->usermatakuliah->id}}
+                                           {{ $counter++}}
                                       </td>
                                       <td>
                                            {{ $matakuliah->usermatakuliah->kode_matakuliah }}
@@ -125,4 +144,19 @@
     <!-- /.card -->
     
   </section>
+  <script>
+    document.getElementById('semester').addEventListener('change', function() {
+        var selectedSemester = this.value;
+        var rows = document.querySelectorAll('#semester tbody tr');
+    
+        rows.forEach(function(row) {
+            var semester = row.querySelector('td:nth-child(6)').textContent.trim();
+            if (semester === selectedSemester || selectedSemester === 'Semua') {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    });
+    </script>
   @endsection

@@ -58,10 +58,10 @@
 
             @if(auth()->check() && auth()->user()->role == 'admin')
                     <li class="nav-item">
-                        <a href="/pages/admin/dosen" class="nav-link">
+                        <a href="/user" class="nav-link">
                             <i class="nav-icon fas fa-users"></i>
                             <p>
-                                Dosen
+                                Dosen & Mahasiswa
                             </p>
                         </a>
                     </li>
@@ -69,7 +69,7 @@
 
             @if(auth()->check() && auth()->user()->role == 'admin')
                     <li class="nav-item">
-                        <a href="/pages/admin/program" class="nav-link">
+                        <a href="/program" class="nav-link">
                             <i class="nav-icon fas fa-thumbtack"></i>
                             <p>
                                 Program Studi
