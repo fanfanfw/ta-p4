@@ -37,11 +37,18 @@
                       </div>
                     </div>
                 @endif
-                <table id="example2" class="table table-bordered table-hover">
+
+                @if(session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
+
+                <table id="example1" class="table table-bordered table-hover">
                   <thead>
                   <tr>
                     <th>No. </th>
-                    <th style="width: 80%">Program Studi</th>
+                    <th style="width: 70%">Program Studi</th>
                     <th>Aksi</th>
                   </tr>
                   </thead>
@@ -55,10 +62,11 @@
                             <form onsubmit="return confirm('Yakin akan menghapus data?')" class="d-inline" action="{{ url('program/'.$item->id) }}" method="post">
                               @csrf
                               @method('DELETE')
-                            <button type="submit" name="submit" class="btn btn-danger btn-sm float">Del </button>
+                              <button type="submit" name="submit" class="btn btn-danger btn-sm float"><i class="fas fa-trash"></i> Hapus</button>
+                            </form>
                           </td>
                         </tr>
-                    @endforeach
+                        @endforeach
                   </tbody>
                 </table>
               </div>

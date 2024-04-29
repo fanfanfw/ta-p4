@@ -1,11 +1,13 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\MahasiswaController;
-use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProgramController;
+use App\Http\Controllers\DatadosenController;
+use App\Http\Controllers\MatakuliahController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,6 +45,8 @@ Route::get('/pages/admin/dashboard', [AdminController::class, 'index'])->middlew
 
 Route::resource('program', ProgramController::class)->only(['index', 'store', 'update', 'destroy'])->middleware('userAkses:admin');
 Route::resource('user', UserController::class)->only(['index', 'store', 'update', 'destroy'])->middleware('userAkses:admin');
+Route::resource('matakuliah', MatakuliahController::class)->only(['index', 'store', 'update', 'destroy'])->middleware('userAkses:admin');
+Route::resource('data-dosen', DatadosenController::class)->only(['index', 'store', 'update', 'destroy'])->middleware('userAkses:admin');
 
 
 

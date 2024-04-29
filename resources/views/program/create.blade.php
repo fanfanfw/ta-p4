@@ -1,34 +1,30 @@
-<div class="modal fade" id="modalTambahData">
-  <form method="POST" action="{{ url('program') }}">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header bg-success text-white">
-          <h4 class="modal-title">Tambah Program Studi</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          
-        </div>
-        <div class="modal-body">
-            @csrf
-            <div class="form-group">
-              <label for="nama">Program Studi:</label>
-              <input type="text" class="form-control @error('name') is-invalid @enderror" id="inputnama"  name="name" value="{{ Session::get('name') }}" placeholder="Masukan Program Studi" required>
-              @error ('name')
-              <div class="invalid-feedback">
-                {{ $message }}
-            </div>
-              @enderror
-            </div>
+<div class="modal fade" id="modalTambahData" tabindex="-1" role="dialog" aria-labelledby="modalTambahDataLabel" aria-hidden="true">
+  <form action="{{ url('program') }}" method="POST">
+   <div class="modal-dialog" role="document">
+     <div class="modal-content">
+       <div class="modal-header bg-success text-white">
+         <h5 class="modal-title" id="modalTambahDataLabel">Tambah Program Studi</h5>
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+         </button>
+       </div>
+       <div class="modal-body">
+         @csrf
+           <div class="form-group">
+             <label for="nama">Nama Program Studi:</label>
+             <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"  name="name" value="{{ old('name') }}" placeholder="Masukan Nama">
+             @error ('name')
+             <div class="invalid-feedback">
+               {{ $message }}
+             </div>
+             @enderror
+           </div>
           </div>
-          <div class="modal-footer justify-content-between">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Keluar</button>
-            <button type="submit" class="btn btn-success">Submit</button>
-          </div>
-        </form>
-        </div>
-      <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-  </div>
-  <!-- /.modal -->
+       <div class="modal-footer">
+         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+         <button type="submit" class="btn btn-success">Buat</button>
+       </form>
+       </div>
+     </div>
+   </div>
+ </div>

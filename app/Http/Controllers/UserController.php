@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Hash; 
+use Illuminate\Database\QueryException;
 
 
 class UserController extends Controller
@@ -95,6 +96,21 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+
+        try {
+            // Lakukan proses penghapusan di sini
+            // Contoh: User::destroy($id);
+            User::where('id', $id)->delete();
+            return redirect()->to('user')->with('success', 'Berhasil Menghapus Data');
+        } catch (QueryException $e) {
+            if ($e->getCode() == '23000') {
+                // Jika terjadi pelanggaran integritas konstrain foreign key,
+                // maka tampilkan pesan error yang sesuai
+                return redirect()->to('user')->with('error', 'Tidak dapat menghapus data karena masih terdapat ketergantungan dengan data lain.');
+            } else {
+                // Jika terjadi kesalahan lain, tampilkan pesan error umum
+                return redirect()->to('user')->with('error', 'Terjadi kesalahan saat menghapus data.');
+            }
+        }
     }
 }

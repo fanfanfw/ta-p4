@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ProgramStudi;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
-
+use Illuminate\Database\QueryException;
 
 class ProgramController extends Controller
 {
@@ -22,8 +21,6 @@ class ProgramController extends Controller
 
     public function store(Request $request)
     {
-        //
-        Session::flash('name',$request->name);
 
         $request->validate([
             'name' => 'required|min:3'
@@ -74,7 +71,20 @@ class ProgramController extends Controller
     public function destroy(string $id)
     {
         //
-        ProgramStudi::where('id', $id)->delete();
+        try {
+            // Lakukan proses penghapusan di sini
+            // Contoh: User::destroy($id);
+            ProgramStudi::where('id', $id)->delete();
         return redirect()->to('program')->with('success', 'Berhasil Menghapus Data');
+        } catch (QueryException $e) {
+            if ($e->getCode() == '23000') {
+                // Jika terjadi pelanggaran integritas konstrain foreign key,
+                // maka tampilkan pesan error yang sesuai
+                return redirect()->to('program')->with('error', 'Tidak dapat menghapus data karena masih terdapat ketergantungan dengan data lain.');
+            } else {
+                // Jika terjadi kesalahan lain, tampilkan pesan error umum
+                return redirect()->to('program')->with('error', 'Terjadi kesalahan saat menghapus data.');
+            }
+        }
     }
 }

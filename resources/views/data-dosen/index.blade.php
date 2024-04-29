@@ -8,11 +8,11 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Data User</h3>
+                <h3 class="card-title">Data Dose</h3>
                 <br>
 
                 <!-- Tombol untuk membuka modal -->
-                  <button type="button" class="btn btn-success btn-sm float mt-3" data-toggle="modal" data-target="#modalTambahuserData">
+                  <button type="button" class="btn btn-success btn-sm float mt-3" data-toggle="modal" data-target="#modalTambahdosenData">
                     <i class="fas fa-plus"></i> Tambah Data
                   </button>
 
@@ -54,23 +54,18 @@
                   <thead>
                   <tr>
                     <th>No</th>
-                    <th>Nama User</th>
-                    <th>NIM / NIDN</th>
-                    <th>Role</th>
-                    <th>Aksi</th>
+                    <th>Nama Dosen</th>
                   </tr>
                   </thead>
                   <tbody>
                     
-                    @foreach ($user as $item)
+                    @foreach ($namadosen as $item)
                          
                      <tr>
                        <td>{{ $loop->iteration }}</td>
                       <td>{{ $item->name }}</td>
-                      <td>{{ $item->username }}</td>
-                      <td>{{ $item->role }}</td>
                       <td>
-                        <button class="btn btn-warning btn-sm float" data-toggle="modal" data-target="#modalEdituserData{{ $item->id }}"><i class="fas fa-edit"></i> Ubah</button>
+                        <button class="btn btn-warning btn-sm float" data-toggle="modal" data-target="#modalEditdosenData{{ $item->id }}"><i class="fas fa-edit"></i> Ubah</button>
                         <form onsubmit="return confirm('Yakin akan menghapus data?')" class="d-inline" action="{{ url('user/'.$item->id) }}" method="post">
                           @csrf
                           @method('DELETE')
@@ -84,8 +79,8 @@
                 </table>
               </div>
               <!-- /.card-body -->
-              @include('user.create')
-              @include('user.edit')
+              @include('data-dosen.create')
+              @include('data-dosen.edit')
             </div>
             <!-- /.card -->
 

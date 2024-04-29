@@ -61,7 +61,7 @@
                         <a href="/user" class="nav-link">
                             <i class="nav-icon fas fa-users"></i>
                             <p>
-                                Dosen & Mahasiswa
+                                Data User
                             </p>
                         </a>
                     </li>
@@ -77,11 +77,21 @@
                         </a>
                     </li>
             @endif
+            @if(auth()->check() && auth()->user()->role == 'admin')
+                    <li class="nav-item">
+                        <a href="/data-dosen" class="nav-link">
+                            <i class="nav-icon fas fa-thumbtack"></i>
+                            <p>
+                                Data Dosen
+                            </p>
+                        </a>
+                    </li>
+            @endif
             
             @if(auth()->check() && auth()->user()->role == 'admin')
                     <li class="nav-item">
-                        <a href="/pages/admin/matakuliah" class="nav-link">
-                            <i class="nav-icon fas fa-thumbtack"></i>
+                        <a href="/matakuliah" class="nav-link">
+                          <i class="nav-icon fas fa-book"></i>
                             <p>
                                 Matakuliah
                             </p>

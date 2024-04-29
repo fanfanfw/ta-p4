@@ -9,8 +9,6 @@
           </button>
         </div>
         <div class="modal-body">
-          <!-- /.card-header -->
-          <!-- form start -->
           @csrf
             <div class="form-group">
               <label for="nama">Nama Dosen:</label>
@@ -50,7 +48,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-          <button type="submit" class="btn btn-primary">Buat</button>
+          <button type="submit" class="btn btn-success">Buat</button>
         </form>
         </div>
       </div>
