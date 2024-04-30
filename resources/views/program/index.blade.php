@@ -6,7 +6,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
-            <div class="card">
+            <div class="card mt-3">
               <div class="card-header">
                 <h3 class="card-title">Program Studi</h3>
                 <br>

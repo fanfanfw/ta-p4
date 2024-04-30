@@ -8,7 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Matakuliah extends Model
 {
     use HasFactory;
-    
+
+    protected $fillable = [
+        'kode_matakuliah',
+        'name',
+        'nama_dosen_id',
+        'program_studi_id',
+        'sks',
+        'semester'
+];
+
 
         public function namaDosen()
         {
