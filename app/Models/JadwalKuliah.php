@@ -28,6 +28,11 @@ class JadwalKuliah extends Model
         return $this->belongsTo(Kelas::class, 'kelas_id');
     }
 
+    public function ruangans()
+     {
+        return $this->belongsTo(Ruangan::class, 'ruangan_id');
+     }
+
     public function userJadwalKuliahs()
     {
         return $this->hasMany(UserJadwalKuliah::class, 'jadwal_kuliah_id');
