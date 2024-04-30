@@ -17,6 +17,11 @@
               <label for="nama">Program Studi:</label>
               <input type="text" class="form-control" id="inputnama" name="name" value="{{ $item->name }}" placeholder="Masukan Program Studi" autofocus>
             </div>
+            @error ('name')
+                <div class="invalid-feedback">
+                  {{ $message }}
+                </div>
+                @enderror
           </div>
           <div class="modal-footer justify-content-between">
             <button type="button" class="btn btn-default" data-dismiss="modal">Keluar</button>
