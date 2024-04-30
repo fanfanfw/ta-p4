@@ -68,25 +68,49 @@
             @endif
 
             @if(auth()->check() && auth()->user()->role == 'admin')
+                      <li class="nav-item">
+                          <a href="/data-dosen" class="nav-link">
+                              <i class="nav-icon fas fa-user"></i>
+                              <p>
+                                  Data Dosen
+                              </p>
+                          </a>
+                      </li>
+            @endif
+
+            @if(auth()->check() && auth()->user()->role == 'admin')
                     <li class="nav-item">
                         <a href="/program" class="nav-link">
                             <i class="nav-icon fas fa-graduation-cap"></i>
                             <p>
-                                Program Studi
+                               Data Program Studi
                             </p>
                         </a>
                     </li>
             @endif
+
             @if(auth()->check() && auth()->user()->role == 'admin')
                     <li class="nav-item">
-                        <a href="/data-dosen" class="nav-link">
-                            <i class="nav-icon fas fa-user"></i>
+                        <a href="/ruangan" class="nav-link">
+                            <i class="nav-icon fas fa-chalkboard"></i>
                             <p>
-                                Data Dosen
+                               Data Ruangan
                             </p>
                         </a>
                     </li>
             @endif
+
+            @if(auth()->check() && auth()->user()->role == 'admin')
+                    <li class="nav-item">
+                        <a href="/kelas" class="nav-link">
+                            <i class="nav-icon fas fa-school"></i>
+                            <p>
+                               Data Kelas
+                            </p>
+                        </a>
+                    </li>
+            @endif
+           
             
             @if(auth()->check() && auth()->user()->role == 'admin')
                     <li class="nav-item">

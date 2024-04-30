@@ -50,10 +50,10 @@
               </select>
             </div>
           </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-          <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
-        </div>
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Keluar</button>
+            <button type="submit" name="submit" class="btn btn-primary">Simpan</button>
+          </div>
         </form>
       </div>
     </div>
