@@ -36,14 +36,6 @@ class ProgramController extends Controller
         return redirect()->to('program')->with('success', 'Berhasil Menambahakan Data Program Studi');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    // public function edit(string $id)
-    // {
-    //     //
-        
-    // }
 
     /**
      * Update the specified resource in storage.
