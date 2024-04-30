@@ -43,14 +43,13 @@ Route::middleware(['auth'])->group(function(){
 Route::get('/pages/admin/dashboard', [AdminController::class, 'index'])->middleware('userAkses:admin');
 
 
-Route::resource('program', ProgramController::class)->only(['index', 'store', 'update', 'destroy'])->middleware('userAkses:admin');
 Route::resource('user', UserController::class)->only(['index', 'store', 'update', 'destroy'])->middleware('userAkses:admin');
-Route::resource('matakuliah', MatakuliahController::class)->only(['index', 'store', 'update', 'destroy'])->middleware('userAkses:admin');
+Route::resource('program', ProgramController::class)->only(['index', 'store', 'update', 'destroy'])->middleware('userAkses:admin');
 Route::resource('data-dosen', DatadosenController::class)->only(['index', 'store', 'update', 'destroy'])->middleware('userAkses:admin');
+Route::resource('matakuliah', MatakuliahController::class)->only(['index', 'store', 'update', 'destroy'])->middleware('userAkses:admin');
 
 
 
-Route::get('/pages/admin/matakuliah', [AdminController::class, 'matakuliah'])->name('admin.matakuliah')->middleware('userAkses:admin');
 
 Route::get('/pages/admin/jadwal', [AdminController::class, 'jadwalkuliah'])->name('admin.jadwalkuliah')->middleware('userAkses:admin');
 

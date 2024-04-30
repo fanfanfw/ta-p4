@@ -70,7 +70,7 @@
             @if(auth()->check() && auth()->user()->role == 'admin')
                     <li class="nav-item">
                         <a href="/program" class="nav-link">
-                            <i class="nav-icon fas fa-thumbtack"></i>
+                            <i class="nav-icon fas fa-graduation-cap"></i>
                             <p>
                                 Program Studi
                             </p>
@@ -80,7 +80,7 @@
             @if(auth()->check() && auth()->user()->role == 'admin')
                     <li class="nav-item">
                         <a href="/data-dosen" class="nav-link">
-                            <i class="nav-icon fas fa-thumbtack"></i>
+                            <i class="nav-icon fas fa-user"></i>
                             <p>
                                 Data Dosen
                             </p>
