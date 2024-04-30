@@ -7,7 +7,10 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\DatadosenController;
+use App\Http\Controllers\JadwalController;
+use App\Http\Controllers\KelasController;
 use App\Http\Controllers\MatakuliahController;
+use App\Http\Controllers\RuanganController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,7 +49,10 @@ Route::get('/pages/admin/dashboard', [AdminController::class, 'index'])->middlew
 Route::resource('user', UserController::class)->only(['index', 'store', 'update', 'destroy'])->middleware('userAkses:admin');
 Route::resource('program', ProgramController::class)->only(['index', 'store', 'update', 'destroy'])->middleware('userAkses:admin');
 Route::resource('data-dosen', DatadosenController::class)->only(['index', 'store', 'update', 'destroy'])->middleware('userAkses:admin');
+Route::resource('ruangan', RuanganController::class)->only(['index', 'store', 'update', 'destroy'])->middleware('userAkses:admin');
+Route::resource('kelas', KelasController::class)->only(['index', 'store', 'update', 'destroy'])->middleware('userAkses:admin');
 Route::resource('matakuliah', MatakuliahController::class)->only(['index', 'store', 'update', 'destroy'])->middleware('userAkses:admin');
+Route::resource('jadwal', JadwalController::class)->only(['index', 'store', 'update', 'destroy'])->middleware('userAkses:admin');
 
 
 
