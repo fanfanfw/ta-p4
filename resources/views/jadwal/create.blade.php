@@ -10,88 +10,91 @@
          </div>
          <div class="modal-body">
            @csrf
-          {{-- Kode Matakuliah --}}
-          <div class="form-group"> 
-            <label for="nidn">Kode Matakuliah:</label>
-            <input type="text" class="form-control @error('kode_matakuliah') is-invalid @enderror" id="kode_matakuliah" name="kode_matakuliah" value="{{ old('kode_matakuliah') }}"  placeholder="Masukan Kode Matakuliah">
-            @error ('kode_matakuliah')
-            <div class="invalid-feedback">
-              {{ $message }}
-            </div>
-            @enderror
-          </div>
-          {{-- Kode Matakuliah End --}}
 
           {{-- Nama Matakuliah --}}
           <div class="form-group">
             <label for="exampleInputPassword1">Nama Matakuliah:</label>
-            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}"  placeholder="Nama Matakuliah">
-            @error ('name')
+            <select class="form-control @error('matakuliah_id') is-invalid @enderror" id="matakuliah_id" name="matakuliah_id">
+              <option value="">Pilih Matakuliah</option>
+              @foreach ($matakuliah as $item)
+                  <option value="{{ $item->id }}">{{ $item->kode_matakuliah }} - {{ $item->name }} - {{ $item->namadosen->name }}</option>
+              @endforeach
+          </select>
+            @error ('matakuliah_id')
             <div class="invalid-feedback">
               {{ $message }}
             </div>
             @enderror
           </div>
           {{-- Nama Mtakuliah End --}}
-
-           {{-- nama Dosen --}}
-             <div class="form-group">
-               <label for="nama">Nama Dosen:</label>
-               <select class="form-control @error('nama_dosen_id') is-invalid @enderror" id="nama_dosen_id" name="nama_dosen_id">
-                    <option value="">Pilih Nama Dosen</option>
-                    @foreach ($namadosen as $item)
-                        <option value="{{ $item->id }}">{{ $item->name }}</option>
-                    @endforeach
-                </select>
-               @error ('nama_dosen_id')
-               <div class="invalid-feedback">
-                 {{ $message }}
-               </div>
-               @enderror
-             </div>
-             {{-- Nama Dosen End --}}
-
-             {{-- Program Studi --}}
-             <div class="form-group">
-              <label for="nama">Program Studi:</label>
-              <select class="form-control @error('program_studi_id') is-invalid @enderror" id="program_studi_id" name="program_studi_id">
-                   <option value="">Pilih Program Studi</option>
-                   @foreach ($program as $item)
-                       <option value="{{ $item->id }}">{{ $item->name }}</option>
-                   @endforeach
-               </select>
-              @error ('nama_dosen_id')
-              <div class="invalid-feedback">
-                {{ $message }}
-              </div>
-              @enderror
-            </div>
-            {{-- Program Studi End --}}
             
-             {{-- SKS --}}
+             {{-- Ruangan --}}
              <div class="form-group">
-               <label for="status">SKS :</label>
-               <input type="number" class="form-control @error('sks') is-invalid @enderror" id="sks" name="sks" value="{{ old('sks') }}"  placeholder="Jumlah SKS">
-               @error ('sks')
-               <div class="invalid-feedback">
-                 {{ $message }}
-               </div>
-               @enderror
-             </div>
-             {{-- SKS End --}}
-
-             {{-- Semester --}}
-             <div class="form-group">
-              <label for="status">Semester :</label>
-              <input type="number" class="form-control @error('semester') is-invalid @enderror" id="semester" name="semester" value="{{ old('semester') }}"  placeholder="Semester Ke">
-              @error ('semester')
+              <label for="exampleInputPassword1">Ruangan:</label>
+              <select class="form-control @error('ruangan_id') is-invalid @enderror" id="ruangan_id" name="ruangan_id">
+                <option value="">Pilih Ruangan</option>
+                @foreach ($ruangan as $item)
+                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                @endforeach
+            </select>
+              @error ('ruangan_id')
               <div class="invalid-feedback">
                 {{ $message }}
               </div>
               @enderror
             </div>
-            {{-- Semester End --}}
+             {{-- Ruangan End --}}
 
+             {{-- hari --}}
+             <div class="form-group">
+              <label for="exampleInputPassword1">Hari:</label>
+              <select class="form-control @error('hari_id') is-invalid @enderror" id="hari_id" name="hari_id">
+                <option value="">Pilih Hari</option>
+                @foreach ($hari as $item)
+                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                @endforeach
+            </select>
+              @error ('hari_id')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+              @enderror
+            </div>
+            {{-- hari End --}}
+
+            {{-- jam --}}
+            <div class="form-group">
+              <label for="exampleInputPassword1">Jam:</label>
+              <select class="form-control @error('jam_id') is-invalid @enderror" id="jam_id" name="jam_id">
+                <option value="">Pilih Jam</option>
+                @foreach ($jam as $item)
+                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                @endforeach
+            </select>
+              @error ('jam_id')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+              @enderror
+            </div>
+            {{-- jam end --}}
+
+            {{-- kelas --}}
+            <div class="form-group">
+              <label for="exampleInputPassword1">Kelas:</label>
+              <select class="form-control @error('kelas_id') is-invalid @enderror" id="kelas_id" name="kelas_id">
+                <option value="">Pilih Maakuliah</option>
+                @foreach ($kelas as $item)
+                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                @endforeach
+            </select>
+              @error ('kelas_id')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+              @enderror
+            </div>
+            {{-- kelas end --}}
              <!-- /.card-body -->
             </div>
          <div class="modal-footer">

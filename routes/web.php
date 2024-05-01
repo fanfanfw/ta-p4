@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\InputJadwalController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\LoginController;
@@ -37,11 +38,11 @@ Route::middleware(['guest'])->group(function(){
 Route::get('/home', function(){
     if (auth()->check()) {
         if (auth()->user()->role === 'admin') {
-            return redirect('/pages/admin/dashboard');
+            return redirect('/dashboard');
         } elseif (auth()->user()->role === 'mahasiswa') {
-            return redirect('/pages/mahasiswa/dashboard');
+            return redirect('/mahasiswa/dashboard');
         } elseif (auth()->user()->role === 'dosen') {
-            return redirect('/pages/dosen/dashboard');
+            return redirect('/dosen/dashboard');
         }
     }
     return redirect('/login');
@@ -61,6 +62,7 @@ Route::resource('matakuliah', MatakuliahController::class)->only(['index', 'stor
 Route::resource('jadwal', JadwalController::class)->only(['index', 'store', 'update', 'destroy'])->middleware('userAkses:admin');
 Route::resource('kelas', KelasController::class)->only(['index', 'store', 'update', 'destroy'])->middleware('userAkses:admin');
 Route::resource('jam', JamController::class)->only(['index', 'store', 'update', 'destroy'])->middleware('userAkses:admin');
+Route::resource('input-jadwal', InputJadwalController::class)->only(['index', 'store', 'update', 'destroy'])->middleware('userAkses:admin');
 
 
 
@@ -68,8 +70,8 @@ Route::resource('jam', JamController::class)->only(['index', 'store', 'update', 
 Route::get('/pages/admin/jadwal', [AdminController::class, 'jadwalkuliah'])->name('admin.jadwalkuliah')->middleware('userAkses:admin');
 
 
-Route::get('/pages/mahasiswa/dashboard', [MahasiswaController::class, 'index'])->middleware('userAkses:mahasiswa');
-Route::get('/pages/mahasiswa/matakuliah', [MahasiswaController::class, 'matakuliah'])->middleware('userAkses:mahasiswa');
+Route::get('/mahasiswa/dashboard', [MahasiswaController::class, 'index'])->middleware('userAkses:mahasiswa');
+Route::get('/mahasiswa/matakuliah', [MahasiswaController::class, 'matakuliah'])->middleware('userAkses:mahasiswa');
 
 
 Route::get('/pages/dosen/dashboard', [DosenController::class, 'index'])->middleware('userAkses:dosen');
