@@ -17,6 +17,7 @@ class UserController extends Controller
     {
         return view('user.index', [
             'user' => User::latest()->get(),
+            'active' => 'user',
         ]);
     }
 

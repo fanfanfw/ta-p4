@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Kelas;
+use App\Models\Jam;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 
 
-class KelasController extends Controller
+class JamController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,13 +15,12 @@ class KelasController extends Controller
     public function index()
     {
         //
-        return view('kelas.index', [
-            'kelas' => Kelas::latest()->get(),
-            'active' => 'kelas',
+        return view('jam.index', [
+            'jam' => Jam::latest()->get(),
+            'active' => 'jam',
         ]);
     }
 
-  
 
     /**
      * Store a newly created resource in storage.
@@ -32,15 +31,15 @@ class KelasController extends Controller
         $request->validate([
             'name' => 'required|min:3'
         ],[
-            'name.required' => 'Nama Kelas Wajib Diisi!'
+            'name.required' => 'Jam Kelas Wajib Diisi!'
         ]);
 
         $data = [
             'name' => $request->name
         ];
 
-        Kelas::create($data);
-        return redirect()->to('kelas')->with('success', 'Berhasil Menambahakan Data Kelas');
+        Jam::create($data);
+        return redirect()->to('jam')->with('success', 'Berhasil Menambahakan Data Jam Kelas');
     }
 
    
@@ -54,15 +53,15 @@ class KelasController extends Controller
         $request->validate([
             'name' => 'required|min:3'
         ],[
-            'name.required' => 'Nama Kelas Wajib Diisi!'
+            'name.required' => 'Jam Kelas Wajib Diisi!'
         ]);
 
         $data = [
             'name' => $request->name
         ];
 
-        Kelas::find($id)->update($data);
-        return redirect()->to('kelas')->with('success', 'Berhasil Mengubah Data Kelas');
+        Jam::find($id)->update($data);
+        return redirect()->to('jam')->with('success', 'Berhasil Mengubah Data Jam Kelas');
     }
 
     /**
@@ -74,16 +73,16 @@ class KelasController extends Controller
         try {
             // Lakukan proses penghapusan di sini
             // Contoh: User::destroy($id);
-            Kelas::where('id', $id)->delete();
-        return redirect()->to('kelas')->with('success', 'Berhasil Menghapus Data');
+            Jam::where('id', $id)->delete();
+        return redirect()->to('jam')->with('success', 'Berhasil Menghapus Data');
         } catch (QueryException $e) {
             if ($e->getCode() == '23000') {
                 // Jika terjadi pelanggaran integritas konstrain foreign key,
                 // maka tampilkan pesan error yang sesuai
-                return redirect()->to('kelas')->with('error', 'Tidak dapat menghapus data karena masih terdapat ketergantungan dengan data lain.');
+                return redirect()->to('jam')->with('error', 'Tidak dapat menghapus data karena masih terdapat ketergantungan dengan data lain.');
             } else {
                 // Jika terjadi kesalahan lain, tampilkan pesan error umum
-                return redirect()->to('kelas')->with('error', 'Terjadi kesalahan saat menghapus data.');
+                return redirect()->to('jam')->with('error', 'Terjadi kesalahan saat menghapus data.');
             }
         }
     }

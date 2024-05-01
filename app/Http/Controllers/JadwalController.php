@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Hari;
 use App\Models\JadwalKuliah;
+use App\Models\Jam;
+use App\Models\Kelas;
+use App\Models\Matakuliah;
 use App\Models\NamaDosen;
 use App\Models\ProgramStudi;
 use App\Models\Ruangan;
@@ -19,11 +23,21 @@ class JadwalController extends Controller
         $namadosen = NamaDosen::all();
         $program = ProgramStudi::all();
         $ruangan = Ruangan::all();
-        return view('matakuliah.index', [
+        $matakuliah = Matakuliah::all();
+        $hari = Hari::all();
+        $kelas = Kelas::all();
+        $jam = Jam::all();
+        return view('jadwal.index', [
             'jadwal' => JadwalKuliah::latest()->get(),
             'namadosen' => $namadosen,
             'program' => $program,
-            'ruangan' => $ruangan
+            'ruangan' => $ruangan,
+            'matakuliah' => $matakuliah,
+            'hari' => $hari,
+            'kelas' => $kelas,
+            'jam' => $jam,
+            'active' => 'jadwal',
+
         ]);
     }
 
@@ -35,6 +49,7 @@ class JadwalController extends Controller
     public function store(Request $request)
     {
         //
+        
     }
 
    

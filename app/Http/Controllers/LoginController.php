@@ -36,7 +36,7 @@ class LoginController extends Controller
             }elseif(Auth::user()->role == 'dosen'){
                 return redirect('/pages/dosen/dashboard');
             }elseif(Auth::user()->role == 'admin'){
-                return redirect('/pages/admin/dashboard');
+                return redirect('/dashboard');
             }
 
         }else{

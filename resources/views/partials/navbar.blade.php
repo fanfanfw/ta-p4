@@ -43,138 +43,133 @@
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-          <li class="nav-item">
-               <a href="{{ auth()->check() ? (auth()->user()->role == 'admin' ? '/pages/admin/dashboard' : (auth()->user()->role == 'mahasiswa' ? '/pages/mahasiswa/dashboard' : '/pages/dosen/dashboard')) : '/login' }}" class="nav-link"> <!-- Tindakan untuk pengguna yang belum login, misalnya redirect ke halaman login -->
-                {{-- @endif --}}
-                <i class="nav-icon fas fa-tachometer-alt"></i>
-                <p>
-                   Dashboard
-                 </p>
-                 </a>
-            </li>
+       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+       
+        <li class="nav-item">
+         <a href="{{ auth()->check() ? (auth()->user()->role == 'admin' ? '/dashboard' : (auth()->user()->role == 'mahasiswa' ? '/pages/mahasiswa/dashboard' : '/pages/dosen/dashboard')) : '/login' }}" class="nav-link {{ ($active === "dashboard") ? 'active' : '' }}"> <!-- Tindakan untuk pengguna yang belum login, misalnya redirect ke halaman login -->
+          {{-- @endif --}}
+          <i class="nav-icon fas fa-tachometer-alt"></i>
+          <p>
+             Dashboard
+           </p>
+           </a>
+        </li>
 
-            @if(auth()->check() && auth()->user()->role == 'admin')
-                    <li class="nav-item">
-                        <a href="/user" class="nav-link">
-                            <i class="nav-icon fas fa-users"></i>
-                            <p>
-                                Data User
-                            </p>
-                        </a>
-                    </li>
-            @endif
+      @if(auth()->check() && auth()->user()->role == 'admin')
+        <li class="nav-item">
+          <a href="#" class="nav-link {{ ($active === "user" || $active === "data-dosen" || $active === "program" || $active === "ruangan" || $active === "kelas" || $active === "jam") ? 'active' : '' }}">
+        <i class="nav-icon fas fa-copy"></i>
+        <p>
+          Input Data
+          <i class="fas fa-angle-left right"></i>
+        </p>
+      </a>
+      <ul class="nav nav-treeview">
+        <li class="nav-item">
+          <a href="/user" class="nav-link {{ ($active === "user") ? 'active' : '' }}">
+              <i class="nav-icon fas fa-users"></i>
+              <p>Data User</p>
+          </a>
+      </li>
+      <li class="nav-item">
+        <a href="/data-dosen" class="nav-link {{ ($active === "data-dosen") ? 'active' : '' }}">
+            <i class="nav-icon fas fa-user"></i>
+            <p>
+                Data Dosen
+            </p>
+        </a>
+    </li>
+    <li class="nav-item">
+      <a href="/program" class="nav-link {{ ($active === "program") ? 'active' : '' }}">
+          <i class="nav-icon fas fa-graduation-cap"></i>
+          <p>
+            Data Program Studi
+          </p>
+      </a>
+  </li>
+  <li class="nav-item">
+    <a href="/ruangan" class="nav-link {{ ($active === "ruangan") ? 'active' : '' }}">
+        <i class="nav-icon fas fa-chalkboard"></i>
+        <p>
+          Data Ruangan
+        </p>
+    </a>
+</li>
+<li class="nav-item">
+  <a href="/kelas" class="nav-link {{ ($active === "kelas") ? 'active' : '' }}">
+      <i class="nav-icon fas fa-school"></i>
+      <p>
+        Data Kelas
+      </p>
+  </a>
+</li>
+<li class="nav-item">
+  <a href="/jam" class="nav-link {{ ($active === "jam") ? 'active' : '' }}">
+      <i class="nav-icon fas fa-clock"></i>
+      <p>
+        Data Jam Kelas
+      </p>
+  </a>
+</li>
+       
+      </ul>
+    </li>
+    @endif
 
-            @if(auth()->check() && auth()->user()->role == 'admin')
-                      <li class="nav-item">
-                          <a href="/data-dosen" class="nav-link">
-                              <i class="nav-icon fas fa-user"></i>
-                              <p>
-                                  Data Dosen
-                              </p>
-                          </a>
-                      </li>
-            @endif
+    @if(auth()->check() && auth()->user()->role == 'admin')
+              <li class="nav-item">
+                  <a href="/matakuliah" class="nav-link {{ ($active === "matakuliah") ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-book"></i>
+                      <p>
+                          Matakuliah
+                      </p>
+                  </a>
+              </li>
+      @endif
 
-            @if(auth()->check() && auth()->user()->role == 'admin')
-                    <li class="nav-item">
-                        <a href="/program" class="nav-link">
-                            <i class="nav-icon fas fa-graduation-cap"></i>
-                            <p>
-                               Data Program Studi
-                            </p>
-                        </a>
-                    </li>
-            @endif
+      @if(auth()->check() && auth()->user()->role == 'admin')
+              <li class="nav-item">
+                  <a href="/jadwal" class="nav-link {{ ($active === "jadwal") ? 'active' : '' }}">
+                      <i class="nav-icon fas fa-thumbtack"></i>
+                      <p>
+                          Jadwal
+                      </p>
+                  </a>
+              </li>
+      @endif
 
-            @if(auth()->check() && auth()->user()->role == 'admin')
-                    <li class="nav-item">
-                        <a href="/ruangan" class="nav-link">
-                            <i class="nav-icon fas fa-chalkboard"></i>
-                            <p>
-                               Data Ruangan
-                            </p>
-                        </a>
-                    </li>
-            @endif
+      {{-- Mahasiswa --}}
+      {{-- @if(auth()->check() && auth()->user()->role == 'mahasiswa')
+              <li class="nav-item">
+                  <a href="/pages/mahasiswa/matakuliah" class="nav-link">
+                      <i class="nav-icon fas fa-book"></i>
+                      <p>
+                          Matakuliah
+                      </p>
+                  </a>
+              </li>
+      @endif
 
-            @if(auth()->check() && auth()->user()->role == 'admin')
-                    <li class="nav-item">
-                        <a href="/kelas" class="nav-link">
-                            <i class="nav-icon fas fa-school"></i>
-                            <p>
-                               Data Kelas
-                            </p>
-                        </a>
-                    </li>
-            @endif
-           
-            
-            @if(auth()->check() && auth()->user()->role == 'admin')
-                    <li class="nav-item">
-                        <a href="/matakuliah" class="nav-link">
-                          <i class="nav-icon fas fa-book"></i>
-                            <p>
-                                Matakuliah
-                            </p>
-                        </a>
-                    </li>
-            @endif
-
-            @if(auth()->check() && auth()->user()->role == 'admin')
-                    <li class="nav-item">
-                        <a href="/pages/admin/jadwal" class="nav-link">
-                            <i class="nav-icon fas fa-thumbtack"></i>
-                            <p>
-                                Jadwal
-                            </p>
-                        </a>
-                    </li>
-            @endif
-
-            {{-- Mahasiswa --}}
-            @if(auth()->check() && auth()->user()->role == 'mahasiswa')
-                    <li class="nav-item">
-                        <a href="/pages/mahasiswa/matakuliah" class="nav-link">
-                            <i class="nav-icon fas fa-book"></i>
-                            <p>
-                                Matakuliah
-                            </p>
-                        </a>
-                    </li>
-            @endif
-
-            {{-- Dosen --}}
-            @if(auth()->check() && auth()->user()->role == 'dosen')
-                    <li class="nav-item">
-                        <a href="/pages/dosen/matakuliah" class="nav-link">
-                            <i class="nav-icon fas fa-book"></i>
-                            <p>
-                                Matakuliah
-                            </p>
-                        </a>
-                    </li>
-            @endif
-
-            <li class="nav-item">
-              <a href=""></a>
-            </li>
-          </ul>
-          {{-- logout --}}
-          <ul class="nav nav-pills nav-sidebar flex-column mt-5" data-widget="treeview" role="menu" data-accordion="false">
-            <li class="nav-item">
-                <a href="/logout" class="nav-link">
-                    <i class="nav-icon fas fa-sign-out-alt"></i>
-                    <p>
-                        Logout
-                    </p>
-                </a>
-            </li>
-          </ul>
-        {{-- /.logout> --}}
-      </nav>
+      @if(auth()->check() && auth()->user()->role == 'dosen')
+              <li class="nav-item">
+                  <a href="/pages/dosen/matakuliah" class="nav-link">
+                      <i class="nav-icon fas fa-book"></i>
+                      <p>
+                          Matakuliah
+                      </p>
+                  </a>
+              </li>
+      @endif --}}
+      <li class="nav-item mt-5">
+        <a href="/logout" class="nav-link">
+            <i class="nav-icon fas fa-sign-out-alt"></i>
+            <p>
+                Logout
+            </p>
+        </a>
+    </li>
+  </ul>
+</nav>
     </div>
     <!-- /.sidebar -->
   </aside>

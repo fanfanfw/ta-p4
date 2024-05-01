@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Jam;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Hari;
@@ -102,9 +103,6 @@ class DatabaseSeeder extends Seeder
                 'name' => 'kamis'
             ],
             [
-                
-            ],
-            [
                 'name' => 'jumat'
             ],
             [
@@ -115,6 +113,18 @@ class DatabaseSeeder extends Seeder
                 
                 'name' => 'minggu'
             ],
+            ];
+
+            $jam = [
+                [
+                    'name' => '08:00-10:00'
+                ],[
+                    'name' => '10:00-12:00'
+                ],[
+                    'name' => '13:00-15:00'
+                ],[
+                    'name' => '15:00-17:00'
+                ],
             ];
 
             $kelas = [
@@ -339,28 +349,28 @@ class DatabaseSeeder extends Seeder
                             'ruangan_id' => 1,
                             'hari_id' => 1,
                             'kelas_id' => 1,
-                            'jam_ke' => '08:00 - 10:00'
+                            'jam_id' => 1,
                         ],
                         [
                             'matakuliah_id' => 1,
                             'ruangan_id' => 2,
                             'hari_id' => 2,
                             'kelas_id' => 1,
-                            'jam_ke' => '10:00 - 12:00'
+                            'jam_id' => 2,
                         ],
                         [
                             'matakuliah_id' => 2,
                             'ruangan_id' => 1,
                             'hari_id' => 1,
                             'kelas_id' => 1,
-                            'jam_ke' => '10:00 - 12:00'
+                            'jam_id' => 2,
                         ],
                         [
                             'matakuliah_id' => 2,
                             'ruangan_id' => 2,
                             'hari_id' => 2,
                             'kelas_id' => 1,
-                            'jam_ke' => '08:00 - 10:00'
+                            'jam_id' => 1,
                         ],
                     ];
                     $userjadwal = 
@@ -457,6 +467,10 @@ class DatabaseSeeder extends Seeder
         foreach($matakuliah as $key => $val)
         {
             Matakuliah::create($val);
+        }
+        foreach($jam as $key => $val)
+        {
+            Jam::create($val);
         }
         foreach($jadwal as $key => $val)
         {

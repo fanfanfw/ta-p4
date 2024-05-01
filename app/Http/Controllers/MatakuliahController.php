@@ -24,6 +24,7 @@ class MatakuliahController extends Controller
             'matakuliah' => Matakuliah::latest()->get(),
             'namadosen' => $namadosen,
             'program' => $program,
+            'active' => 'matakuliah'
         ]);
     }
 
