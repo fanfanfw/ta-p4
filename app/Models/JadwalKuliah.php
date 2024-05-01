@@ -32,6 +32,10 @@ class JadwalKuliah extends Model
      {
         return $this->belongsTo(Ruangan::class, 'ruangan_id');
      }
+     public function jams()
+     {
+        return $this->belongsTo(Jam::class, 'jam_id');
+     }
 
     public function userJadwalKuliahs()
     {
