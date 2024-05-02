@@ -10,15 +10,21 @@ class JadwalKuliah extends Model
     use HasFactory;
 
     protected $fillable = [
-        'matakuliah_id',
+        // 'matakuliah_id',
+        'dosen_id',
         'ruangan_id',
         'hari_id',
         'kelas_id',
         'jam_id'
     ];
-    public function matakuliah()
+    // public function matakuliah()
+    // {
+    //     return $this->belongsTo(MataKuliah::class, 'matakuliah_id');
+    //}
+
+    public function dosen()
     {
-        return $this->belongsTo(MataKuliah::class, 'matakuliah_id');
+        return $this->belongsTo(NamaDosen::class, 'dosen_id');
     }
 
     public function ruangan()
@@ -42,9 +48,9 @@ class JadwalKuliah extends Model
         return $this->belongsTo(Jam::class, 'jam_id');
      }
 
-    public function userJadwalKuliahs()
-    {
-        return $this->hasMany(UserJadwalKuliah::class, 'jadwal_kuliah_id');
-    }
+    // public function userJadwalKuliahs()
+    // {
+    //     return $this->hasMany(UserJadwalKuliah::class, 'jadwal_kuliah_id');
+    // }
 
 }

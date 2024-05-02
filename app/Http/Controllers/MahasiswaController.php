@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
+use App\Models\UserMatakuliah;
 use App\Models\UserJadwalKuliah;
-
 use App\Models\Matakuliah;
 use App\Models\Jadwalkuliah;
 use App\Models\Hari;
@@ -36,13 +36,19 @@ class MahasiswaController extends Controller
         $userid = Auth::id();
         $semester = $request->input('semester');
     
-        $userjadwalkuliah = UserJadwalKuliah::where('user_id', $userid)->with('jadwalkuliah.matakuliah')->get();
+        $userjadwalkuliah  = UserJadwalKuliah::where('user_id', $userid)->with('jadwalkuliah.matakuliah')
+        ->get()
+        ->flatMap(function ($userjadwalkuliah){
+            return $userjadwalkuliah->jadwalKuliah;
+        })
+        ->groupBy('matakuliah_id');
+        
         $matakuliah = Matakuliah::all();
     
         // Jika yang dipilih adalah "Semua", tampilkan semua data
         if ($semester == 'Semua') {
             return view('mahasiswa.matakuliah', [
-                'userjadwal' => $userjadwalkuliah,
+                'usermatakuliah' => $userjadwalkuliah,
                 'active' => $userjadwalkuliah,
                 'matakuliah' => $matakuliah
             ]);
