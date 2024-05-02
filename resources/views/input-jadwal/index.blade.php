@@ -11,7 +11,7 @@
           
             <div class="card mt-3">
               <div class="card-header">
-                <h3 class="card-title">Data Jadwal Kuliah</h3>
+                <h3 class="card-title">Inputan Jadwal Kuliah</h3>
                 <br>
                 
                 <!-- Tombol untuk membuka modal -->
@@ -58,9 +58,9 @@
                   <thead>
                   <tr>
                     <th>No</th>
-                    <th>Kode Matakuliah</th>
-                    <th>Nama Matakuliah</th>
-                    <th>Nama Dosen</th>
+                    <th>Nama User</th>
+                    <th>NIM / NIDN</th>
+                    <th>Role</th>
                     <th>Program Studi</th>
                     <th>Ruangan</th>
                     <th>Hari</th>
@@ -81,7 +81,7 @@
                       <td>{{ $item->matakuliah->ProgramStudi->name }}</td>
                       <td>{{ $item->ruangan->name }}</td>
                       <td>{{ $item->hari->name }}</td>
-                      <td>{{ $item->jam->name }}</td>
+                      <td>{{ $item->jams->name }}</td>
                       <td>{{ $item->kelas->name }}</td>
                       <td>
                         <button class="btn btn-warning btn-sm float" data-toggle="modal" data-target="#modalEditjadwalData{{ $item->id }}"><i class="fas fa-edit"></i> Ubah</button>
@@ -132,7 +132,7 @@
                                 @endphp
                                 <td>
                                     @foreach ($jadwalKuliah as $kuliah)
-                                      <b> {{ $kuliah->matakuliah->name }}</b> - {{ $kuliah->matakuliah->namadosen->name }} - {{ $kuliah->ruangan->name }} - {{ $kuliah->Kelas->name }} </br> </br>
+                                      <b> {{ $kuliah->matakuliah->name }}</b> - {{ $kuliah->matakuliah->namadosen->name }} - {{ $kuliah->ruangan->name }} - {{ $kuliah->Kelas->name }} <br>
                                     @endforeach
                                 </td>
                             @endforeach

@@ -84,36 +84,19 @@
                           </tr>
                       </thead>
                       <tbody>
-                        @php
-                        $counter = 1
-                        @endphp
-                          @foreach ($usermatakuliah as $matakuliah)
-                          @if ($matakuliah->usermatakuliah->semester == '1')
-                                  <tr>
-                                      <td>
-                                           {{ $counter++}}
-                                      </td>
-                                      <td>
-                                           {{ $matakuliah->usermatakuliah->kode_matakuliah }}
-                                        </td>
-                                        <td>
-                                            {{ $matakuliah->usermatakuliah->name }}
-                                         </td>
-                                         <td>
-                                            {{ $matakuliah->usermatakuliah->namaDosen->name }}
-                                         </td>
-                                         <td>
-                                             {{ $matakuliah->usermatakuliah->sks }}
-                                            </td>
-                                            <td>
-                                                {{ $matakuliah->usermatakuliah->semester }}
-                                            </td>
-                                            <td>
-                                               {{ $matakuliah->usermatakuliah->programStudi->name }}
-                                            </td>
-                                    </tr>
-                            @endif
-                          @endforeach
+                        @foreach ($userjadwal as $item)
+                        
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $item->jadwalkuliah->matakuliah->id }}</td>
+                            <td>{{ $item->jadwalkuliah->matakuliah->name }}</td>
+                            <td>{{ $item->jadwalkuliah->matakuliah->namadosen->name }}</td>
+                            <td>{{ $item->jadwalkuliah->matakuliah->sks }}</td>
+                            <td>{{ $item->jadwalkuliah->matakuliah->semester }}</td>
+                            <td>{{ $item->jadwalkuliah->matakuliah->programStudi->name }}</td>
+                        </tr>
+                    @endforeach
+                    
                       </tbody>
                   </table>
                 {{-- </div> --}}
