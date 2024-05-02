@@ -29,9 +29,9 @@ class InputJadwalController extends Controller
         $hari = Hari::all();
         $kelas = Kelas::all();
         $jam = Jam::all();
-        $userjadwal = UserJadwalKuliah::all();
+        // $userjadwal = UserJadwalKuliah::where();
         return view('input-jadwal.index', [
-            'input-jadwal' => JadwalKuliah::latest()->get(),
+            'userjadwal' => UserJadwalKuliah::latest()->get(),
             'namadosen' => $namadosen,
             'program' => $program,
             'ruangan' => $ruangan,
@@ -40,7 +40,6 @@ class InputJadwalController extends Controller
             'kelas' => $kelas,
             'jam' => $jam,
             'active' => 'input-jadwal',
-            'userjadwal' => $userjadwal
 
 
         ]);

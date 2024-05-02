@@ -143,7 +143,7 @@
                   <a href="/input-jadwal" class="nav-link {{ ($active === "input-jadwal") ? 'active' : '' }}">
                       <i class="nav-icon fas fa-pen"></i>
                       <p>
-                         Input Jadwal Kuliah
+                         Input Jadwal Mahasiswa
                       </p>
                   </a>
               </li>

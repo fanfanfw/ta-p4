@@ -11,7 +11,7 @@
           
             <div class="card mt-3">
               <div class="card-header">
-                <h3 class="card-title">Inputan Jadwal Kuliah</h3>
+                <h3 class="card-title">Inputan Jadwal Mahasiswa</h3>
                 <br>
                 
                 <!-- Tombol untuk membuka modal -->
@@ -53,36 +53,33 @@
                                     </div>
                                 @endif
 
+                  
               
                 <table id="example1" class="table table-bordered table-hover">
                   <thead>
                   <tr>
                     <th>No</th>
-                    <th>Nama User</th>
-                    <th>NIM / NIDN</th>
-                    <th>Role</th>
+                    <th>Nama Mahasiswa</th>
+                    <th>NIM</th>
+                    <th>Matakuliah</th>
                     <th>Program Studi</th>
-                    <th>Ruangan</th>
-                    <th>Hari</th>
-                    <th>Jam</th>
+                    <th>Dosen</th>
                     <th>Kelas</th>
                     <th>Aksi</th>
                   </tr>
                   </thead>
                   <tbody>
                     
-                    @foreach ($jadwal as $item)
-                         
+                    @foreach ($userjadwal as $item)
+                    @if ($item->user->role == 'mahasiswa')
                      <tr>
                        <td>{{ $loop->iteration }}</td>
-                       <td>{{ $item->matakuliah->kode_matakuliah }}</td>
-                       <td>{{ $item->matakuliah->name }}</td>
-                      <td>{{ $item->matakuliah->namadosen->name }}</td>
-                      <td>{{ $item->matakuliah->ProgramStudi->name }}</td>
-                      <td>{{ $item->ruangan->name }}</td>
-                      <td>{{ $item->hari->name }}</td>
-                      <td>{{ $item->jams->name }}</td>
-                      <td>{{ $item->kelas->name }}</td>
+                       <td>{{ $item->user->name }}</td>
+                       <td>{{ $item->user->username }}</td>
+                      <td>{{ $item->jadwalKuliah->matakuliah->name }}</td>
+                      <td>{{ $item->jadwalKuliah->matakuliah->ProgramStudi->name }}</td>
+                      <td>{{ $item->jadwalKuliah->matakuliah->namadosen->name }}</td>
+                      <td>{{ $item->jadwalKuliah->Kelas->name }}</td>
                       <td>
                         <button class="btn btn-warning btn-sm float" data-toggle="modal" data-target="#modalEditjadwalData{{ $item->id }}"><i class="fas fa-edit"></i> Ubah</button>
                         <form onsubmit="return confirm('Yakin akan menghapus data?')" class="d-inline" action="{{ url('jadwal/'.$item->id) }}" method="post">
@@ -92,18 +89,18 @@
                       </form>
                       </td>
                     </tr>
-                        
+                    
+                    @endif
                     @endforeach
                   </tbody>
                 </table>
               </div>
               <!-- /.card-body -->
-              @include('jadwal.create')
-              @include('jadwal.edit')
+              @include('input-jadwal.create')
+              @include('input-jadwal.edit')
             </div>
             <!-- /.card -->
-
-            <div class="card mt-3">
+            {{-- <div class="card mt-3">
               <div class="card-header">
                   <h3 class="card-title">Jadwal Kuliah</h3>
                   
@@ -142,7 +139,7 @@
                     </tbody>
                   </table>
               </div>
-            </div>
+            </div> --}}
               <!-- /.card-body -->
             <!-- /.card -->
           </div>
