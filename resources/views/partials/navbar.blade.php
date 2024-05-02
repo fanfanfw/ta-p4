@@ -46,7 +46,7 @@
        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
        
         <li class="nav-item">
-         <a href="{{ auth()->check() ? (auth()->user()->role == 'admin' ? '/dashboard' : (auth()->user()->role == 'mahasiswa' ? '/pages/mahasiswa/dashboard' : '/pages/dosen/dashboard')) : '/login' }}" class="nav-link {{ ($active === "dashboard") ? 'active' : '' }}"> <!-- Tindakan untuk pengguna yang belum login, misalnya redirect ke halaman login -->
+         <a href="{{ auth()->check() ? (auth()->user()->role == 'admin' ? '/dashboard' : (auth()->user()->role == 'mahasiswa' ? '/mahasiswa/dashboard' : '/dosen/dashboard')) : '/login' }}" class="nav-link {{ ($active === "dashboard") ? 'active' : '' }}"> <!-- Tindakan untuk pengguna yang belum login, misalnya redirect ke halaman login -->
           {{-- @endif --}}
           <i class="nav-icon fas fa-tachometer-alt"></i>
           <p>
@@ -138,10 +138,21 @@
               </li>
       @endif
 
-      {{-- Mahasiswa --}}
-      {{-- @if(auth()->check() && auth()->user()->role == 'mahasiswa')
+      @if(auth()->check() && auth()->user()->role == 'admin')
               <li class="nav-item">
-                  <a href="/pages/mahasiswa/matakuliah" class="nav-link">
+                  <a href="/input-jadwal" class="nav-link {{ ($active === "input-jadwal") ? 'active' : '' }}">
+                      <i class="nav-icon fas fa-pen"></i>
+                      <p>
+                         Input Jadwal Kuliah
+                      </p>
+                  </a>
+              </li>
+      @endif
+
+      {{-- Mahasiswa --}}
+      @if(auth()->check() && auth()->user()->role == 'mahasiswa')
+              <li class="nav-item">
+                  <a href="/mahasiswa/matakuliah" class="nav-link">
                       <i class="nav-icon fas fa-book"></i>
                       <p>
                           Matakuliah
@@ -150,7 +161,7 @@
               </li>
       @endif
 
-      @if(auth()->check() && auth()->user()->role == 'dosen')
+      {{-- @if(auth()->check() && auth()->user()->role == 'dosen')
               <li class="nav-item">
                   <a href="/pages/dosen/matakuliah" class="nav-link">
                       <i class="nav-icon fas fa-book"></i>
@@ -159,7 +170,8 @@
                       </p>
                   </a>
               </li>
-      @endif --}}
+      @endif  --}}
+
       <li class="nav-item mt-5">
         <a href="/logout" class="nav-link">
             <i class="nav-icon fas fa-sign-out-alt"></i>
