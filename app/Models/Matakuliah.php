@@ -21,7 +21,7 @@ class Matakuliah extends Model
 
         public function namaDosen()
         {
-            return $this->belongsTo(NamaDosen::class, 'nama_dosen_id');
+            return $this->belongsTo(NamaDosen::class, 'dosen_id');
         }
 
         public function programStudi()

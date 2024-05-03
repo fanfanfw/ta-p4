@@ -11,6 +11,7 @@ class JadwalKuliah extends Model
 
     protected $fillable = [
         'matakuliah_id',
+        'dosen_id',
         'ruangan_id',
         'hari_id',
         'kelas_id',
@@ -42,9 +43,9 @@ class JadwalKuliah extends Model
         return $this->belongsTo(Jam::class, 'jam_id');
      }
 
-    public function userJadwalKuliahs()
-    {
-        return $this->hasMany(UserJadwalKuliah::class, 'jadwal_kuliah_id');
-    }
+    // public function userJadwalKuliahs()
+    // {
+    //     return $this->hasMany(UserJadwalKuliah::class, 'jadwal_kuliah_id');
+    // }
 
 }

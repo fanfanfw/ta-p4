@@ -88,7 +88,7 @@
                         
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $item->jadwalkuliah->matakuliah->kode_matakuliah }}</td>
+                            <td>{{ $item->jadwalkuliah->matakuliah->id }}</td>
                             <td>{{ $item->jadwalkuliah->matakuliah->name }}</td>
                             <td>{{ $item->jadwalkuliah->matakuliah->namadosen->name }}</td>
                             <td>{{ $item->jadwalkuliah->matakuliah->sks }}</td>

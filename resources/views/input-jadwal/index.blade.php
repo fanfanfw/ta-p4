@@ -65,6 +65,7 @@
                     <th>Program Studi</th>
                     <th>Dosen</th>
                     <th>Kelas</th>
+                    <th>Hari</th>
                     <th>Aksi</th>
                   </tr>
                   </thead>
@@ -76,10 +77,13 @@
                        <td>{{ $loop->iteration }}</td>
                        <td>{{ $item->user->name }}</td>
                        <td>{{ $item->user->username }}</td>
-                      <td>{{ $item->jadwalKuliah->matakuliah->name }}</td>
-                      <td>{{ $item->jadwalKuliah->matakuliah->ProgramStudi->name }}</td>
-                      <td>{{ $item->jadwalKuliah->matakuliah->namadosen->name }}</td>
-                      <td>{{ $item->jadwalKuliah->Kelas->name }}</td>
+                       <td>{{ $item->jadwalKuliah->matakuliah->name }}</td>
+                       <td>{{ $item->jadwalKuliah->matakuliah->ProgramStudi->name }}</td>
+                       <td>{{ $item->jadwalKuliah->matakuliah->namadosen->name }}</td>
+                       <td>{{ $item->jadwalKuliah->Kelas->name }}</td>
+                      <td>
+                          {{ $item->jadwalKuliah->hari->name }} - {{ $item->jadwalKuliah->jam->name }}
+                      </td>
                       <td>
                         <button class="btn btn-warning btn-sm float" data-toggle="modal" data-target="#modalEditjadwalData{{ $item->id }}"><i class="fas fa-edit"></i> Ubah</button>
                         <form onsubmit="return confirm('Yakin akan menghapus data?')" class="d-inline" action="{{ url('jadwal/'.$item->id) }}" method="post">
@@ -99,47 +103,8 @@
               @include('input-jadwal.create')
               @include('input-jadwal.edit')
             </div>
-            <!-- /.card -->
-            {{-- <div class="card mt-3">
-              <div class="card-header">
-                  <h3 class="card-title">Jadwal Kuliah</h3>
-                  
-              </div>
-              <div class="card-body">
-                  <table id="example1" class="table table-bordered table-hover">
-                      <thead>
-                          <tr>
-                              <th>Jam</th>
-                              <th>Senin</th>
-                              <th>Selasa</th>
-                              <th>Rabu</th>
-                              <th>Kamis</th>
-                              <th>Jumat</th>
-                              <th>Sabtu</th>
-                              <th>Minggu</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                        @foreach ($jam as $item)
-                      <tr>
-                            <td>{{ $item->name }}</td>
-                            @foreach ($hari as $hariItem)
-                                @php
-                                    $jadwalKuliah = $jadwal->where('hari_id', $hariItem->id)->where('jam_id', $item->id);
-                                @endphp
-                                <td>
-                                    @foreach ($jadwalKuliah as $kuliah)
-                                      <b> {{ $kuliah->matakuliah->name }}</b> - {{ $kuliah->matakuliah->namadosen->name }} - {{ $kuliah->ruangan->name }} - {{ $kuliah->Kelas->name }} <br>
-                                    @endforeach
-                                </td>
-                            @endforeach
-                        </tr>
-                        @endforeach
-
-                    </tbody>
-                  </table>
-              </div>
-            </div> --}}
+            
+            
               <!-- /.card-body -->
             <!-- /.card -->
           </div>

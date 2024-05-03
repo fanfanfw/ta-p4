@@ -156,7 +156,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                  @foreach ($jam as $item)
+                  {{-- @foreach ($jam as $item)
                   <tr>
                       <td>{{ $item->name }}</td>
                       @foreach ($hari as $hariItem)
@@ -166,7 +166,7 @@
                   <td>{{ $jadwalKuliah ? $jadwalKuliah->matakuliah->name : '' }} </br> {{ $jadwalKuliah ? $jadwalKuliah->matakuliah->namadosen->name : '' }} </br> {{ $jadwalKuliah ? $jadwalKuliah->ruangan->name : '' }}</td>
                   @endforeach
                   </tr>
-                  @endforeach
+                  @endforeach --}}
               </tbody>
             </table>
         </div>

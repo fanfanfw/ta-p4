@@ -13,6 +13,6 @@ class NamaDosen extends Model
     
     public function mataKuliahs()
     {
-        return $this->hasMany(Matakuliah::class, 'nama_dosen_id');
+        return $this->hasMany(Matakuliah::class, 'dosen_id');
     }
 }
