@@ -190,7 +190,7 @@ class DatabaseSeeder extends Seeder
                     ];
                     $matakuliah = [
                         [
-                            'dosen_id' => 1,
+                            'nama_dosen_id' => 1,
                             'program_studi_id' => 1,
                             'kode_matakuliah' => 'TI01',
                             'name' => 'Pemrograman 1',
@@ -198,7 +198,7 @@ class DatabaseSeeder extends Seeder
                             'semester' => 1 
                         ],
                         [
-                            'dosen_id' => 1,
+                            'nama_dosen_id' => 1,
                             'program_studi_id' => 1,
                             'kode_matakuliah' => 'TI02',
                             'name' => 'Mini Project 1',
@@ -206,7 +206,7 @@ class DatabaseSeeder extends Seeder
                             'semester' => 1 
                         ],
                         [
-                            'dosen_id' => 2,
+                            'nama_dosen_id' => 1,
                             'program_studi_id' => 1,
                             'kode_matakuliah' => 'TI03',
                             'name' => 'Algoritma',
@@ -214,7 +214,7 @@ class DatabaseSeeder extends Seeder
                             'semester' => 1 
                         ],
                         [
-                            'dosen_id' => 2,
+                            'nama_dosen_id' => 1,
                             'program_studi_id' => 2,
                             'kode_matakuliah' => 'SI01',
                             'name' => 'Pemgrograman 1',
@@ -222,7 +222,7 @@ class DatabaseSeeder extends Seeder
                             'semester' => 1 
                         ],
                         [
-                            'dosen_id' => 2,
+                            'nama_dosen_id' => 1,
                             'program_studi_id' => 2,
                             'kode_matakuliah' => 'SI02',
                             'name' => 'Bhs Inggris',
@@ -230,7 +230,7 @@ class DatabaseSeeder extends Seeder
                             'semester' => 1 
                         ],
                         [
-                            'dosen_id' => 3,
+                            'nama_dosen_id' => 2,
                             'program_studi_id' => 1,
                             'kode_matakuliah' => 'TI04',
                             'name' => 'Matematika Dasar',
@@ -238,7 +238,7 @@ class DatabaseSeeder extends Seeder
                             'semester' => 1 
                         ],
                         [
-                            'dosen_id' => 3,
+                            'nama_dosen_id' => 2,
                             'program_studi_id' => 1,
                             'kode_matakuliah' => 'TI06',
                             'name' => 'Kalkulus',
@@ -246,7 +246,7 @@ class DatabaseSeeder extends Seeder
                             'semester' => 1 
                         ],
                         [
-                            'dosen_id' => 3,
+                            'nama_dosen_id' => 2,
                             'program_studi_id' => 2,
                             'kode_matakuliah' => 'SI03',
                             'name' => 'Matematika Dasar',
@@ -254,7 +254,7 @@ class DatabaseSeeder extends Seeder
                             'semester' => 1 
                         ],
                         [
-                            'dosen_id' => 3,
+                            'nama_dosen_id' => 2,
                             'program_studi_id' => 2,
                             'kode_matakuliah' => 'SI04',
                             'name' => 'Kewirausahaan 1',
@@ -262,7 +262,7 @@ class DatabaseSeeder extends Seeder
                             'semester' => 1 
                         ],
                         [
-                            'dosen_id' => 4,
+                            'nama_dosen_id' => 3,
                             'program_studi_id' => 1,
                             'kode_matakuliah' => 'TI07',
                             'name' => 'Pancasila',
@@ -270,7 +270,7 @@ class DatabaseSeeder extends Seeder
                             'semester' => 2 
                         ],
                         [
-                            'dosen_id' => 4,
+                            'nama_dosen_id' => 3,
                             'program_studi_id' => 1,
                             'kode_matakuliah' => 'TI08',
                             'name' => 'Pemrograman 2',
@@ -278,7 +278,7 @@ class DatabaseSeeder extends Seeder
                             'semester' => 2 
                         ],
                         [
-                            'dosen_id' => 4,
+                            'nama_dosen_id' => 3,
                             'program_studi_id' => 1,
                             'kode_matakuliah' => 'TI09',
                             'name' => 'Mini Project 2',
@@ -286,7 +286,7 @@ class DatabaseSeeder extends Seeder
                             'semester' => 2 
                         ],
                         [
-                            'dosen_id' => 5,
+                            'nama_dosen_id' => 3,
                             'program_studi_id' => 2,
                             'kode_matakuliah' => 'SI05',
                             'name' => 'Pancasila',
@@ -294,7 +294,7 @@ class DatabaseSeeder extends Seeder
                             'semester' => 2 
                         ],
                         [
-                            'dosen_id' => 5,
+                            'nama_dosen_id' => 3,
                             'program_studi_id' => 2,
                             'kode_matakuliah' => 'SI06',
                             'name' => 'Mini Project 2',
@@ -302,7 +302,7 @@ class DatabaseSeeder extends Seeder
                             'semester' => 2 
                         ],
                         [
-                            'dosen_id' => 5,
+                            'nama_dosen_id' => 4,
                             'program_studi_id' => 1,
                             'kode_matakuliah' => 'TI10',
                             'name' => 'Struktur Data',
@@ -310,7 +310,7 @@ class DatabaseSeeder extends Seeder
                             'semester' => 2 
                         ],
                         [
-                            'dosen_id' => 5,
+                            'nama_dosen_id' => 4,
                             'program_studi_id' => 1,
                             'kode_matakuliah' => 'TI11',
                             'name' => 'DBMS',
@@ -318,7 +318,7 @@ class DatabaseSeeder extends Seeder
                             'semester' => 2 
                         ],
                         [
-                            'dosen_id' => 5,
+                            'nama_dosen_id' => 4,
                             'program_studi_id' => 1,
                             'kode_matakuliah' => 'SI07',
                             'name' => 'DBMS',
@@ -326,7 +326,7 @@ class DatabaseSeeder extends Seeder
                             'semester' => 2 
                         ],
                         [
-                            'dosen_id' => 5,
+                            'nama_dosen_id' => 5,
                             'program_studi_id' => 1,
                             'kode_matakuliah' => 'SP001',
                             'name' => 'Laravel',
@@ -334,7 +334,7 @@ class DatabaseSeeder extends Seeder
                             'semester' => 3 
                         ],
                         [
-                            'dosen_id' => 5,
+                            'nama_dosen_id' => 5,
                             'program_studi_id' => 1,
                             'kode_matakuliah' => 'SP001',
                             'name' => 'React JS',
@@ -345,6 +345,7 @@ class DatabaseSeeder extends Seeder
 
                     $jadwal = [
                         [
+                            'dosen_id' => 5,
                             'matakuliah_id' => 1,
                             'ruangan_id' => 1,
                             'hari_id' => 1,
@@ -352,6 +353,7 @@ class DatabaseSeeder extends Seeder
                             'jam_id' => 1,
                         ],
                         [
+                            'dosen_id' => 5,
                             'matakuliah_id' => 1,
                             'ruangan_id' => 2,
                             'hari_id' => 2,
@@ -359,6 +361,7 @@ class DatabaseSeeder extends Seeder
                             'jam_id' => 2,
                         ],
                         [
+                            'dosen_id' => 5,
                             'matakuliah_id' => 2,
                             'ruangan_id' => 1,
                             'hari_id' => 1,
@@ -366,6 +369,7 @@ class DatabaseSeeder extends Seeder
                             'jam_id' => 2,
                         ],
                         [
+                            'dosen_id' => 5,
                             'matakuliah_id' => 2,
                             'ruangan_id' => 2,
                             'hari_id' => 2,
