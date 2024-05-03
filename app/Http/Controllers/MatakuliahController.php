@@ -38,14 +38,14 @@ class MatakuliahController extends Controller
         $request->validate([
             'kode_matakuliah' => 'required|max:255',
             'name' => 'required|max:255',
-            'nama_dosen_id' => 'required',
+            'dosen_id' => 'required',
             'program_studi_id' => 'required',
             'sks'=>'required',
             'semester' => 'required'
         ],[
             'kode_matakuliah.required' => 'Kode Matakuliah Wajib Diisi!',
             'name.required' => 'Nama Matakuliah wajib Diisi!',
-            'nama_dosen_id.required' => 'Nama Dosen Wajib Dipilih!',
+            ' dosen_id.required' => 'Nama Dosen Wajib Dipilih!',
             'program_studi_id.required' => 'Program Studi Wajib Dipilih!',
             'sks.required' => 'SKS Wajib Diisi',
             'semester.required' => 'Semester Wajib Diisi',
@@ -53,7 +53,7 @@ class MatakuliahController extends Controller
         $data = [
             'kode_matakuliah' => $request->kode_matakuliah,
             'name' => $request->name,
-            'nama_dosen_id' => $request->nama_dosen_id,
+            'dosen_id' => $request->dosen_id,
             'program_studi_id' => $request->program_studi_id,
             'sks' => $request->sks,
             'semester' => $request->semester

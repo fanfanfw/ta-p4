@@ -17,10 +17,10 @@ class JadwalKuliah extends Model
         'kelas_id',
         'jam_id',
     ];
-    // public function matakuliah()
-    // {
-    //     return $this->belongsTo(MataKuliah::class, 'matakuliah_id');
-    //}
+    public function matakuliah()
+    {
+        return $this->belongsTo(MataKuliah::class, 'matakuliah_id');
+    }
 
     public function dosen()
     {

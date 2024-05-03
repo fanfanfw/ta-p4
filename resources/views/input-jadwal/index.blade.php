@@ -62,7 +62,7 @@
                     <th>Nama Mahasiswa</th>
                     <th>NIM</th>
                     <th>Matakuliah</th>
-                    <th>Program Studi</th>
+                    <th>Dosen</th>
                     <th>Dosen</th>
                     <th>Kelas</th>
                     <th>Hari</th>
@@ -71,20 +71,24 @@
                   </thead>
                   <tbody>
                     
-                    @foreach ($userjadwal as $item)
+                    @foreach ($usermatakuliah as $item)
                     @if ($item->user->role == 'mahasiswa')
                      <tr>
                        <td>{{ $loop->iteration }}</td>
                        <td>{{ $item->user->name }}</td>
                        <td>{{ $item->user->username }}</td>
-                       <td>{{ $item->jadwalKuliah->matakuliah->name }}</td>
-                       <td>{{ $item->jadwalKuliah->matakuliah->ProgramStudi->name }}</td>
-                       <td>{{ $item->jadwalKuliah->matakuliah->namadosen->name }}</td>
-                       <td>{{ $item->jadwalKuliah->Kelas->name }}</td>
-                      <td>
-                          {{ $item->jadwalKuliah->hari->name }} - {{ $item->jadwalKuliah->jam->name }}
-                      </td>
-                      <td>
+                       <td>{{ $item->matakuliah->name }}</td>
+                       <td>{{ $item->matakuliah->ProgramStudi->name }}</td>
+                       <td>{{ $item->matakuliah->namadosen->name }}</td>
+                       <td>{{ $item->matakuliah->jadwalKuliahs->first()->kelas->name }}</td>
+                       <td>
+                        @foreach($item->matakuliah->jadwalKuliahs as $jadwal)
+                        <ul>
+                          <li><b>Hari: </b>{{ $jadwal->hari->name }} </br> <b>Jam: </b>{{ $jadwal->jam->name }}</li>
+                          </ul>
+                        @endforeach
+                       </td>
+                       <td>
                         <button class="btn btn-warning btn-sm float" data-toggle="modal" data-target="#modalEditjadwalData{{ $item->id }}"><i class="fas fa-edit"></i> Ubah</button>
                         <form onsubmit="return confirm('Yakin akan menghapus data?')" class="d-inline" action="{{ url('jadwal/'.$item->id) }}" method="post">
                           @csrf

@@ -12,7 +12,7 @@ class Matakuliah extends Model
     protected $fillable = [
         'kode_matakuliah',
         'name',
-        'nama_dosen_id',
+        'dosen_id',
         'program_studi_id',
         'sks',
         'semester'
@@ -30,6 +30,10 @@ class Matakuliah extends Model
         }
 
         public function jadwalKuliahs()
+        {
+            return $this->hasMany(JadwalKuliah::class, 'matakuliah_id');
+        }
+        public function usermatakuliah()
         {
             return $this->hasMany(JadwalKuliah::class, 'matakuliah_id');
         }

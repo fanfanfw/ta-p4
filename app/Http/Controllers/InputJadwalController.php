@@ -2,15 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Hari;
-use App\Models\JadwalKuliah;
-use App\Models\Jam;
-use App\Models\Kelas;
-use App\Models\Matakuliah;
-use App\Models\NamaDosen;
-use App\Models\ProgramStudi;
-use App\Models\Ruangan;
 use App\Models\UserJadwalKuliah;
+use App\Models\Kelas;
+use App\Models\UserMatakuliah;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 
@@ -21,26 +15,16 @@ class InputJadwalController extends Controller
      */
     public function index()
 {
-    $namadosen = NamaDosen::all();
-    $program = ProgramStudi::all();
-    $ruangan = Ruangan::all();
-    $matakuliah = Matakuliah::all();
-    $hari = Hari::all();
+    $usermatakuliah = UserMatakuliah::all();
     $kelas = Kelas::all();
-    $jam = Jam::all();
 
     $userjadwal2 = UserJadwalKuliah::all(); // Menggunakan with('user') untuk memuat relasi user
     // $userjadwal = $userjadwal2->unique('hari_id'); // Menghindari duplikasi data berdasarkan user_id
 
     return view('input-jadwal.index', [
         'userjadwal' => $userjadwal2,
-        'namadosen' => $namadosen,
-        'program' => $program,
-        'ruangan' => $ruangan,
-        'matakuliah' => $matakuliah,
-        'hari' => $hari,
+        'usermatakuliah' => $usermatakuliah,
         'kelas' => $kelas,
-        'jam' => $jam,
         'active' => 'input-jadwal',
     ]);
 }

@@ -37,7 +37,7 @@
            {{-- nama Dosen --}}
              <div class="form-group">
                <label for="nama">Nama Dosen:</label>
-               <select class="form-control @error('nama_dosen_id') is-invalid @enderror" id="nama_dosen_id" name="nama_dosen_id">
+               <select class="form-control @error('nama_dosen_id') is-invalid @enderror" id="dosen_id" name="dosen_id">
                     <option value="">Pilih Nama Dosen</option>
                     @foreach ($namadosen as $item)
                         <option value="{{ $item->id }}">{{ $item->name }}</option>

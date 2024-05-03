@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('jadwal_kuliahs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('dosen_id');
-            $table->foreign('dosen_id')->references('id')->on('nama_dosens')->onDelete('restrict');
+            $table->unsignedBigInteger('matakuliah_id');
+            $table->foreign('matakuliah_id')->references('id')->on('matakuliahs')->onDelete('restrict');
             $table->unsignedBigInteger('ruangan_id');
             $table->foreign('ruangan_id')->references('id')->on('ruangans')->onDelete('restrict');
             $table->unsignedBigInteger('hari_id');
