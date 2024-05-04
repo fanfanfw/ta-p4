@@ -10,7 +10,8 @@
 - Run __php artisan key:generate__
 - Run __php artisan migrate --seed__ (tersedia seeder jika anda membtuhkan)
 - Jalankan Pada Browser
-- Akun:
+
+- Akun Untuk Login 
 - Admin: __admin__ - __123456__
 - Mahasiswa: __1222624__ - __123456__
 - Dosen: __12226244__ - __123456__
