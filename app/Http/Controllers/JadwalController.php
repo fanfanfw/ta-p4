@@ -56,20 +56,17 @@ class JadwalController extends Controller
             'ruangan_id' => 'required',
             'hari_id' => 'required',
             'jam_id' => 'required',
-            'kelas_id'=>'required',
         ],[
             'matakuliah_id.required' => 'Matakuliah Wajib Diisi!',
             'ruangan_id.required' => 'Ruangan wajib Diisi!',
             'hari_id.required' => 'Hari Wajib Dipilih!',
             'jam_id.required' => 'Jam Pelajaran Wajib Dipilih!',
-            'kelas_id.required' => 'Kelas Wajib Diisi',
         ]);
         $data = [
             'matakuliah_id' => $request->matakuliah_id,
             'ruangan_id' => $request->ruangan_id,
             'hari_id' => $request->hari_id,
             'jam_id' => $request->jam_id,
-            'kelas_id' => $request->kelas_id,
         ];
 
         JadwalKuliah::create($data);
@@ -88,20 +85,17 @@ class JadwalController extends Controller
             'ruangan_id' => 'required',
             'hari_id' => 'required',
             'jam_id' => 'required',
-            'kelas_id'=>'required',
         ],[
             'matakuliah_id.required' => 'Matakuliah Wajib Diisi!',
             'ruangan_id.required' => 'Ruangan wajib Diisi!',
             'hari_id.required' => 'Hari Wajib Dipilih!',
             'jam_id.required' => 'Jam Pelajaran Wajib Dipilih!',
-            'kelas_id.required' => 'Kelas Wajib Diisi',
         ]);
         $data = [
             'matakuliah_id' => $request->matakuliah_id,
             'ruangan_id' => $request->ruangan_id,
             'hari_id' => $request->hari_id,
             'jam_id' => $request->jam_id,
-            'kelas_id' => $request->kelas_id,
         ];
 
         JadwalKuliah::find($id)->update($data);
@@ -123,8 +117,7 @@ class JadwalController extends Controller
             if ($e->getCode() == '23000') {
                 // Jika terjadi pelanggaran integritas konstrain foreign key,
                 // maka tampilkan pesan error yang sesuai
-                return redirect()->to('jadwal')->with('error
-                ', 'Tidak dapat menghapus data karena masih terdapat ketergantungan dengan data lain.');
+                return redirect()->to('jadwal')->with('error', 'Tidak dapat menghapus data karena masih terdapat ketergantungan dengan data lain.');
             } else {
                 // Jika terjadi kesalahan lain, tampilkan pesan error umum
                 return redirect()->to('jadwal')->with('error', 'Terjadi kesalahan saat menghapus data.');

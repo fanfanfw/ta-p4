@@ -15,7 +15,8 @@ class Matakuliah extends Model
         'dosen_id',
         'program_studi_id',
         'sks',
-        'semester'
+        'semester',
+        'kelas_id',
 ];
 
 
@@ -33,10 +34,14 @@ class Matakuliah extends Model
         {
             return $this->hasMany(JadwalKuliah::class, 'matakuliah_id');
         }
+        
         public function usermatakuliah()
         {
             return $this->hasMany(JadwalKuliah::class, 'matakuliah_id');
         }
        
-
+        public function kelas()
+        {
+            return $this->belongsTo(Kelas::class, 'kelas_id');
+        }
 }

@@ -11,11 +11,11 @@
           
             <div class="card mt-3">
               <div class="card-header">
-                <h3 class="card-title">Inputan Jadwal Mahasiswa</h3>
+                <h3 class="card-title">Inputan Matakuliah Mahasiswa</h3>
                 <br>
                 
                 <!-- Tombol untuk membuka modal -->
-                  <button type="button" class="btn btn-success btn-sm float mt-3" data-toggle="modal" data-target="#modalTambahjadwalData">
+                  <button type="button" class="btn btn-success btn-sm float mt-3" data-toggle="modal" data-target="#modalTambahinputjadwalData">
                     <i class="fas fa-plus"></i> Tambah Data
                   </button>
 
@@ -70,18 +70,23 @@
                   </tr>
                   </thead>
                   <tbody>
+                    @php
+                        $counter = 1;
+                    @endphp
                     
                     @foreach ($usermatakuliah as $item)
                     @if ($item->user->role == 'mahasiswa')
                      <tr>
-                       <td>{{ $loop->iteration }}</td>
+                       <td>{{ $counter++ }}</td>
                        <td>{{ $item->user->name }}</td>
                        <td>{{ $item->user->username }}</td>
                        <td>{{ $item->matakuliah->name }}</td>
                        <td>{{ $item->matakuliah->ProgramStudi->name }}</td>
                        <td>{{ $item->matakuliah->namadosen->name }}</td>
-                       <td>{{ $item->matakuliah->jadwalKuliahs->first()->kelas->name }}</td>
                        <td>
+                        {{ $item->matakuliah->kelas->name }}
+                      </td>
+                      <td>
                         @foreach($item->matakuliah->jadwalKuliahs as $jadwal)
                         <ul>
                           <li><b>Hari: </b>{{ $jadwal->hari->name }} </br> <b>Jam: </b>{{ $jadwal->jam->name }}</li>
@@ -89,8 +94,8 @@
                         @endforeach
                        </td>
                        <td>
-                        <button class="btn btn-warning btn-sm float" data-toggle="modal" data-target="#modalEditjadwalData{{ $item->id }}"><i class="fas fa-edit"></i> Ubah</button>
-                        <form onsubmit="return confirm('Yakin akan menghapus data?')" class="d-inline" action="{{ url('jadwal/'.$item->id) }}" method="post">
+                        <button class="btn btn-warning btn-sm float" data-toggle="modal" data-target="#modalEditinputjadwalData{{ $item->id }}"><i class="fas fa-edit"></i> Ubah</button>
+                        <form onsubmit="return confirm('Yakin akan menghapus data?')" class="d-inline" action="{{ url('input-matakuliah/'.$item->id) }}" method="post">
                           @csrf
                           @method('DELETE')
                         <button class="btn btn-danger btn-sm float" type="submit" name="submit"><i class="fas fa-delete"></i> Hapus</button>
@@ -104,8 +109,8 @@
                 </table>
               </div>
               <!-- /.card-body -->
-              @include('input-jadwal.create')
-              @include('input-jadwal.edit')
+              @include('input-matakuliah.create')
+              @include('input-matakuliah.edit')
             </div>
             
             

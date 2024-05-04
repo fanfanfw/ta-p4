@@ -17,7 +17,7 @@
             <select class="form-control @error('matakuliah_id') is-invalid @enderror" id="matakuliah_id" name="matakuliah_id">
               <option value="">Pilih Matakuliah</option>
               @foreach ($matakuliah as $item)
-                  <option value="{{ $item->id }}">{{ $item->kode_matakuliah }} - {{ $item->name }} - {{ $item->namadosen->name }}</option>
+                  <option value="{{ $item->id }}">{{ $item->kode_matakuliah }} - {{ $item->name }} - {{ $item->namadosen->name }} - {{ $item->kelas->name }}</option>
               @endforeach
           </select>
             @error ('matakuliah_id')
@@ -79,22 +79,7 @@
             </div>
             {{-- jam end --}}
 
-            {{-- kelas --}}
-            <div class="form-group">
-              <label for="exampleInputPassword1">Kelas:</label>
-              <select class="form-control @error('kelas_id') is-invalid @enderror" id="kelas_id" name="kelas_id">
-                <option value="">Pilih Maakuliah</option>
-                @foreach ($kelas as $item)
-                    <option value="{{ $item->id }}">{{ $item->name }}</option>
-                @endforeach
-            </select>
-              @error ('kelas_id')
-              <div class="invalid-feedback">
-                {{ $message }}
-              </div>
-              @enderror
-            </div>
-            {{-- kelas end --}}
+            
              <!-- /.card-body -->
             </div>
          <div class="modal-footer">

@@ -14,7 +14,6 @@ class JadwalKuliah extends Model
         'dosen_id',
         'ruangan_id',
         'hari_id',
-        'kelas_id',
         'jam_id',
     ];
     public function matakuliah()
@@ -36,12 +35,6 @@ class JadwalKuliah extends Model
     {
         return $this->belongsTo(Hari::class, 'hari_id');
     }
-
-    public function kelas()
-    {
-        return $this->belongsTo(Kelas::class, 'kelas_id');
-    }
-
     
      public function jam()
      {

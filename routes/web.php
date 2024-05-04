@@ -1,7 +1,8 @@
 <?php
 
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\InputJadwalController;
+use App\Http\Controllers\InputMatakuliahController;
+use App\Http\Controllers\InputMatakuliahDosenController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\LoginController;
@@ -62,7 +63,8 @@ Route::resource('matakuliah', MatakuliahController::class)->only(['index', 'stor
 Route::resource('jadwal', JadwalController::class)->only(['index', 'store', 'update', 'destroy'])->middleware('userAkses:admin');
 Route::resource('kelas', KelasController::class)->only(['index', 'store', 'update', 'destroy'])->middleware('userAkses:admin');
 Route::resource('jam', JamController::class)->only(['index', 'store', 'update', 'destroy'])->middleware('userAkses:admin');
-Route::resource('input-jadwal', InputJadwalController::class)->only(['index', 'store', 'update', 'destroy'])->middleware('userAkses:admin');
+Route::resource('input-matakuliah', InputMatakuliahController::class)->only(['index','store', 'update', 'destroy'])->middleware('userAkses:admin');
+Route::resource('input-matakuliah-dosen', InputMatakuliahDosenController::class)->only(['index','store', 'update', 'destroy'])->middleware('userAkses:admin');
 
 
 

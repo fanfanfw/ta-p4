@@ -140,10 +140,21 @@
 
       @if(auth()->check() && auth()->user()->role == 'admin')
               <li class="nav-item">
-                  <a href="/input-jadwal" class="nav-link {{ ($active === "input-jadwal") ? 'active' : '' }}">
+                  <a href="/input-matakuliah" class="nav-link {{ ($active === "input-matakukliah") ? 'active' : '' }}">
                       <i class="nav-icon fas fa-pen"></i>
                       <p>
-                         Input Jadwal Mahasiswa
+                       Matakuliah Mahasiswa
+                      </p>
+                  </a>
+              </li>
+      @endif
+
+      @if(auth()->check() && auth()->user()->role == 'admin')
+              <li class="nav-item">
+                  <a href="/input-matakuliah-dosen" class="nav-link {{ ($active === "input-matakukliah-dosen") ? 'active' : '' }}">
+                      <i class="nav-icon fas fa-pen"></i>
+                      <p>
+                       Matakuliah Dosen
                       </p>
                   </a>
               </li>

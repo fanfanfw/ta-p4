@@ -83,22 +83,6 @@
             </div>
             {{-- jam end --}}
 
-            {{-- kelas --}}
-            <div class="form-group">
-              <label for="exampleInputPassword1">Kelas:</label>
-              <select class="form-control @error('kelas_id') is-invalid @enderror" id="kelas_id" name="kelas_id">
-                <option value="">Pilih Maakuliah</option>
-                @foreach ($kelas as $kelass)
-                    <option value="{{ $kelass->id }}" {{ $kelass->id == $item->kelas_id ? 'selected' : '' }}>{{ $kelass->name }}</option>
-                @endforeach
-            </select>
-              @error ('kelas_id')
-              <div class="invalid-feedback">
-                {{ $message }}
-              </div>
-              @enderror
-            </div>
-            {{-- kelas end --}}
 
           <!-- /.card-body -->
          </div>

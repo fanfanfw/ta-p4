@@ -82,7 +82,7 @@
                       <td>{{ $item->ruangan->name }}</td>
                       <td>{{ $item->hari->name }}</td>
                       <td>{{ $item->jam->name }}</td>
-                      <td>{{ $item->kelas->name }}</td>
+                      <td>{{ $item->matakuliah->kelas->name }}</td>
                       <td>
                         <button class="btn btn-warning btn-sm float" data-toggle="modal" data-target="#modalEditjadwalData{{ $item->id }}"><i class="fas fa-edit"></i> Ubah</button>
                         <form onsubmit="return confirm('Yakin akan menghapus data?')" class="d-inline" action="{{ url('jadwal/'.$item->id) }}" method="post">
@@ -132,7 +132,7 @@
                                 @endphp
                                 <td>
                                     @foreach ($jadwalKuliah as $kuliah)
-                                      <b> {{ $kuliah->matakuliah->name }}</b> - {{ $kuliah->matakuliah->namadosen->name }} - {{ $kuliah->ruangan->name }} - {{ $kuliah->Kelas->name }} </br> </br>
+                                      <b> {{ $kuliah->matakuliah->name }}</b> - {{ $kuliah->matakuliah->namadosen->name }} - {{ $kuliah->ruangan->name }} - {{ $kuliah->matakuliah->Kelas->name }} </br> </br>
                                     @endforeach
                                 </td>
                             @endforeach

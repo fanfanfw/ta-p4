@@ -195,7 +195,8 @@ class DatabaseSeeder extends Seeder
                             'kode_matakuliah' => 'TI01',
                             'name' => 'Pemrograman 1',
                             'sks' => 2,
-                            'semester' => 1 
+                            'semester' => 1 ,
+                            'kelas_id' => 1,
                         ],
                         [
                             'dosen_id' => 1,
@@ -203,7 +204,8 @@ class DatabaseSeeder extends Seeder
                             'kode_matakuliah' => 'TI02',
                             'name' => 'Mini Project 1',
                             'sks' => 3,
-                            'semester' => 1 
+                            'semester' => 1 ,
+                            'kelas_id' => 1,
                         ],
                         [
                             'dosen_id' => 2,
@@ -211,7 +213,8 @@ class DatabaseSeeder extends Seeder
                             'kode_matakuliah' => 'TI03',
                             'name' => 'Algoritma',
                             'sks' => 3,
-                            'semester' => 1 
+                            'semester' => 1 ,
+                            'kelas_id' => 1,
                         ],
                         [
                             'dosen_id' => 2,
@@ -219,7 +222,8 @@ class DatabaseSeeder extends Seeder
                             'kode_matakuliah' => 'SI01',
                             'name' => 'Pemgrograman 1',
                             'sks' => 2,
-                            'semester' => 1 
+                            'semester' => 1 ,
+                            'kelas_id' => 1,
                         ],
                         [
                             'dosen_id' => 3,
@@ -227,7 +231,8 @@ class DatabaseSeeder extends Seeder
                             'kode_matakuliah' => 'SI02',
                             'name' => 'Bhs Inggris',
                             'sks' => 3,
-                            'semester' => 1 
+                            'semester' => 1 ,
+                            'kelas_id' => 1,
                         ],
                         [
                             'dosen_id' => 3,
@@ -235,7 +240,8 @@ class DatabaseSeeder extends Seeder
                             'kode_matakuliah' => 'TI04',
                             'name' => 'Matematika Dasar',
                             'sks' => 2,
-                            'semester' => 1 
+                            'semester' => 1 ,
+                            'kelas_id' => 1,
                         ],
                     ];
 
@@ -244,65 +250,26 @@ class DatabaseSeeder extends Seeder
                             'matakuliah_id' => 1,
                             'ruangan_id' => 1,
                             'hari_id' => 1,
-                            'kelas_id' => 1,
                             'jam_id' => 1,
                         ],
                         [
                             'matakuliah_id' => 1,
                             'ruangan_id' => 2,
                             'hari_id' => 2,
-                            'kelas_id' => 1,
                             'jam_id' => 2,
                         ],
                         [
                             'matakuliah_id' => 2,
                             'ruangan_id' => 1,
                             'hari_id' => 1,
-                            'kelas_id' => 1,
                             'jam_id' => 2,
                         ],
                         [
                             'matakuliah_id' => 2,
                             'ruangan_id' => 2,
                             'hari_id' => 2,
-                            'kelas_id' => 1,
                             'jam_id' => 1,
                         ],
-                    ];
-                    $userjadwal = 
-                    [
-                        [
-                            'user_id' => 1,
-                            'jadwal_kuliah_id' => 1
-                        ],
-                        [
-                            'user_id' => 1,
-                            'jadwal_kuliah_id' => 2
-                        ],
-                        [
-                            'user_id' => 1,
-                            'jadwal_kuliah_id' => 3  
-                        ],
-                        [
-                            'user_id' => 1,
-                            'jadwal_kuliah_id' => 4 
-                        ],
-                        [
-                            'user_id' => 2,
-                            'jadwal_kuliah_id' => 1
-                        ],
-                        [
-                            'user_id' => 2,
-                            'jadwal_kuliah_id' => 2
-                        ],
-                        [
-                            'user_id' => 2,
-                            'jadwal_kuliah_id' => 3  
-                        ],
-                        [
-                            'user_id' => 2,
-                            'jadwal_kuliah_id' => 4  
-                        ]
                     ];
                     $usermatakuliah = 
                     [
@@ -359,10 +326,6 @@ class DatabaseSeeder extends Seeder
         foreach($jadwal as $key => $val)
         {
             JadwalKuliah::create($val);
-        }
-        foreach($userjadwal as $key => $val)
-        {
-            UserJadwalKuliah::create($val);
         }
         foreach($usermatakuliah as $key => $val)
         {

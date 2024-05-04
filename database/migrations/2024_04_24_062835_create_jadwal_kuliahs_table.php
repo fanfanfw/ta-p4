@@ -19,8 +19,6 @@ return new class extends Migration
             $table->foreign('ruangan_id')->references('id')->on('ruangans')->onDelete('restrict');
             $table->unsignedBigInteger('hari_id');
             $table->foreign('hari_id')->references('id')->on('haris')->onDelete('restrict');
-            $table->unsignedBigInteger('kelas_id');
-            $table->foreign('kelas_id')->references('id')->on('kelas')->onDelete('restrict');
             $table->unsignedBigInteger('jam_id');
             $table->foreign('jam_id')->references('id')->on('jams')->onDelete('restrict');
             $table->timestamps();

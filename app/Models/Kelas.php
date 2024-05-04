@@ -13,6 +13,6 @@ class Kelas extends Model
     
     public function JadwalKuliah()
     {
-        return $this->hasMany(JadwalKuliah::class, 'kelas_id');
+        return $this->hasMany(Matakuliah::class, 'kelas_id');
     }
 }

@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('name');
             $table->integer('sks');
             $table->integer('semester');
+            $table->unsignedBigInteger('kelas_id');
+            $table->foreign('kelas_id')->references('id')->on('kelas')->onDelete('restrict');
             $table->timestamps();
         });
     }

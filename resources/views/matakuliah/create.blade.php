@@ -92,6 +92,23 @@
             </div>
             {{-- Semester End --}}
 
+            {{-- kelas --}}
+            <div class="form-group">
+              <label for="exampleInputPassword1">Kelas:</label>
+              <select class="form-control @error('kelas_id') is-invalid @enderror" id="kelas_id" name="kelas_id">
+                <option value="">Pilih Maakuliah</option>
+                @foreach ($kelas as $item)
+                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                @endforeach
+            </select>
+              @error ('kelas_id')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+              @enderror
+            </div>
+            {{-- kelas end --}}
+
              <!-- /.card-body -->
             </div>
          <div class="modal-footer">

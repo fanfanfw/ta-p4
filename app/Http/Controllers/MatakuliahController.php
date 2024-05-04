@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Matakuliah;
 use App\Models\NamaDosen;
 use App\Models\ProgramStudi;
+use App\Models\Kelas;
 use Illuminate\Database\QueryException;
 
 
@@ -19,11 +20,13 @@ class MatakuliahController extends Controller
         //
         $namadosen = NamaDosen::all();
         $program = ProgramStudi::all();
+        $kelas = Kelas::all();
 
         return view('matakuliah.index', [
             'matakuliah' => Matakuliah::latest()->get(),
             'namadosen' => $namadosen,
             'program' => $program,
+            'kelas' => $kelas,
             'active' => 'matakuliah'
         ]);
     }
@@ -41,7 +44,8 @@ class MatakuliahController extends Controller
             'dosen_id' => 'required',
             'program_studi_id' => 'required',
             'sks'=>'required',
-            'semester' => 'required'
+            'semester' => 'required',
+            'kelas_id' => 'required'
         ],[
             'kode_matakuliah.required' => 'Kode Matakuliah Wajib Diisi!',
             'name.required' => 'Nama Matakuliah wajib Diisi!',
@@ -49,6 +53,7 @@ class MatakuliahController extends Controller
             'program_studi_id.required' => 'Program Studi Wajib Dipilih!',
             'sks.required' => 'SKS Wajib Diisi',
             'semester.required' => 'Semester Wajib Diisi',
+            'kelas_id.required' => 'Kelas Wajib Diisi',
         ]);
         $data = [
             'kode_matakuliah' => $request->kode_matakuliah,
@@ -56,7 +61,8 @@ class MatakuliahController extends Controller
             'dosen_id' => $request->dosen_id,
             'program_studi_id' => $request->program_studi_id,
             'sks' => $request->sks,
-            'semester' => $request->semester
+            'semester' => $request->semester,
+            'kelas_id' => $request->kelas_id
         ];
 
         Matakuliah::create($data);
@@ -75,7 +81,8 @@ class MatakuliahController extends Controller
             'nama_dosen_id' => 'required',
             'program_studi_id' => 'required',
             'sks'=>'required',
-            'semester' => 'required'
+            'semester' => 'required',
+            'kelas_id' => 'required'
         ],[
             'kode_matakuliah.required' => 'Kode Matakuliah Wajib Diisi!',
             'name.required' => 'Nama Matakuliah wajib Diisi!',
@@ -83,6 +90,7 @@ class MatakuliahController extends Controller
             'program_studi_id.required' => 'Program Studi Wajib Dipilih!',
             'sks.required' => 'SKS Wajib Diisi',
             'semester.required' => 'Semester Wajib Diisi',
+            'kelas_id.required' => 'Kelas Wajib Diisi',
         ]);
         $data = [
             'kode_matakuliah' => $request->kode_matakuliah,
@@ -90,7 +98,8 @@ class MatakuliahController extends Controller
             'nama_dosen_id' => $request->nama_dosen_id,
             'program_studi_id' => $request->program_studi_id,
             'sks' => $request->sks,
-            'semester' => $request->semester
+            'semester' => $request->semester,
+            'kelas_id' => $request->kelas_id
         ];
 
         Matakuliah::find($id)->update($data);
