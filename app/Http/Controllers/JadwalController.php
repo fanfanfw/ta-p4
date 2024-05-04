@@ -39,7 +39,7 @@ class JadwalController extends Controller
             'kelas' => $kelas,
             'jam' => $jam,
             'active' => 'jadwal',
-
+            'title' => 'Jadwal Kuliah'
         ]);
     }
 

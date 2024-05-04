@@ -30,6 +30,7 @@ class InputMatakuliahDosenController extends Controller
                 'lectures' => $lectures,
                 'active' => 'input-matakulih',
                 'matakuliah' => $matakuliah,
+                'title' => 'Input Matakuliah'
             ]);
     }
 
@@ -44,8 +45,8 @@ class InputMatakuliahDosenController extends Controller
             'user_id.required' => 'Mohon Pilih Mahasiswa!',
         ]);
 
-        $matakuliah = Matakuliah::with('jadwalKuliahs.kelas')->find($request->matakuliah_id);
-        if (!$matakuliah || !$matakuliah->jadwalKuliahs->first() || !$matakuliah->jadwalKuliahs->first()->kelas) {
+        $matakuliah = Matakuliah::with('jadwalKuliahs.hari')->find($request->matakuliah_id);
+        if (!$matakuliah || !$matakuliah->jadwalKuliahs->first() || !$matakuliah->jadwalKuliahs->first()->hari) {
             return redirect()->back()->with('error', 'Jadwal Belum Tersedia Untuk Matakuliah Yang Dipiih!!!! SIlahkan Buat Jadwal Terlebih Dahulu');
         }
 
@@ -76,8 +77,8 @@ class InputMatakuliahDosenController extends Controller
             'matakuliah_id' => $request->matakuliah_id,
             'user_id' => $request->user_id,
         ];
-        $matakuliah = Matakuliah::with('jadwalKuliahs.kelas')->find($request->matakuliah_id);
-        if (!$matakuliah || !$matakuliah->jadwalKuliahs->first() || !$matakuliah->jadwalKuliahs->first()->kelas) {
+        $matakuliah = Matakuliah::with('jadwalKuliahs.hari')->find($request->matakuliah_id);
+        if (!$matakuliah || !$matakuliah->jadwalKuliahs->first() || !$matakuliah->jadwalKuliahs->first()->hari) {
             return redirect()->back()->with('error', 'Jadwal Belum Tersedia Untuk Matakuliah Yang Dipiih!!!! SIlahkan Buat Jadwal Terlebih Dahulu');
         }
         

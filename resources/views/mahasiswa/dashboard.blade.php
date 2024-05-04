@@ -23,57 +23,44 @@
     
     <!-- Default box -->
     <div class="card">
-      <div class="card-header">
-        <h3 class="card-title">Jadwal Kuliah</h3>
-        
-        <div class="card-tools">
-          <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-            <i class="fas fa-minus"></i>
-          </button>
-          <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-            <i class="fas fa-times"></i>
-          </button>
-        </div>
-      </div>
-      
-            <div class="card mt-3">
+                  <div class="card mt-3">
               <div class="card-header">
                   <h3 class="card-title">Jadwal Kuliah</h3>
                   
               </div>
               <div class="card-body">
-                  <table id="example1" class="table table-bordered table-hover">
-                      <thead>
-                          <tr>
-                              <th>Jam</th>
-                              <th>Senin</th>
-                              <th>Selasa</th>
-                              <th>Rabu</th>
-                              <th>Kamis</th>
-                              <th>Jumat</th>
-                              <th>Sabtu</th>
-                              <th>Minggu</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                        @foreach ($jam as $item)
+                <table class="table table-bordered table-hover">
+                  <thead>
                       <tr>
-                            <td>{{ $item->name }}</td>
-                            @foreach ($hari as $hariItem)
-                                @php
-                                    $jadwalKuliah = $jadwal->where('hari_id', $hariItem->id)->where('jam_id', $item->id);
-                                @endphp
-                                <td>
-                                    @foreach ($jadwalKuliah as $kuliah)
-                                      <b> {{ $kuliah->matakuliah->name }}</b> - {{ $kuliah->matakuliah->namadosen->name }} - {{ $kuliah->ruangan->name }} - {{ $kuliah->Kelas->name }} <br>
-                                    @endforeach
-                                </td>
-                            @endforeach
-                        </tr>
+                          <th>Jam</th>
+                          <th>Senin</th>
+                          <th>Selasa</th>
+                          <th>Rabu</th>
+                          <th>Kamis</th>
+                          <th>Jumat</th>
+                          <th>Sabtu</th>
+                          <th>Minggu</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    @foreach ($jam as $item)
+                  <tr>
+                        <td>{{ $item->name }}</td>
+                        @foreach ($hari as $hariItem)
+                            @php
+                                $jadwalKuliah = $jadwal->where('hari_id', $hariItem->id)->where('jam_id', $item->id);
+                            @endphp
+                            <td>
+                                @foreach ($jadwalKuliah as $kuliah)
+                                  <b> {{ $kuliah->matakuliah->name }}</b> - {{ $kuliah->matakuliah->namadosen->name }} - {{ $kuliah->ruangan->name }} - {{ $kuliah->matakuliah->Kelas->name }} </br> </br>
+                                @endforeach
+                            </td>
                         @endforeach
+                    </tr>
+                    @endforeach
 
-                    </tbody>
-                  </table>
+                </tbody>
+              </table>
               </div>
             </div>
       <!-- /.card-body -->

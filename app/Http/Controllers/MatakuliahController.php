@@ -27,7 +27,8 @@ class MatakuliahController extends Controller
             'namadosen' => $namadosen,
             'program' => $program,
             'kelas' => $kelas,
-            'active' => 'matakuliah'
+            'active' => 'matakuliah',
+            'title' => 'Matakuliah'
         ]);
     }
 

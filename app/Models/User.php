@@ -45,11 +45,6 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function jadwalKuliahs()
-    {
-        return $this->hasMany(UserJadwalKuliah::class, 'user_id');
-    }
-
     public function usermatakuliahs()
     {
         return $this->hasMany(UserMatakuliah::class, 'user_id');

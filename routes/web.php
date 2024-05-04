@@ -69,15 +69,14 @@ Route::resource('input-matakuliah-dosen', InputMatakuliahDosenController::class)
 
 
 
-Route::get('/pages/admin/jadwal', [AdminController::class, 'jadwalkuliah'])->name('admin.jadwalkuliah')->middleware('userAkses:admin');
 
 
 Route::get('/mahasiswa/dashboard', [MahasiswaController::class, 'index'])->middleware('userAkses:mahasiswa');
 Route::get('/mahasiswa/matakuliah', [MahasiswaController::class, 'matakuliah'])->middleware('userAkses:mahasiswa');
 
 
-Route::get('/pages/dosen/dashboard', [DosenController::class, 'index'])->middleware('userAkses:dosen');
-Route::get('/pages/dosen/matakuliah', [DosenController::class, 'matakuliah'])->middleware('userAkses:dosen');
+Route::get('/dosen/dashboard', [DosenController::class, 'index'])->middleware('userAkses:dosen');
+Route::get('/dosen/matakuliah', [DosenController::class, 'matakuliah'])->middleware('userAkses:dosen');
 Route::get('/logout', [LoginController::class, 'logout']);
 
 

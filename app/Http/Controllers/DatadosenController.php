@@ -17,6 +17,7 @@ class DatadosenController extends Controller
         return view('data-dosen.index', [
             'namadosen' => NamaDosen::latest()->get(),
             'active' => 'data-dosen',
+            'title' => 'Data Dosen'
         ]);
     }
 

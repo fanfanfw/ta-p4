@@ -82,7 +82,7 @@
                        <td>{{ $item->matakuliah->name }}</td>
                        <td>{{ $item->matakuliah->ProgramStudi->name }}</td>
                        <td>
-                        {{ $item->matakuliah->jadwalKuliahs->first()->kelas->name }}
+                        {{ $item->matakuliah->kelas->name }}
                       </td>
                       <td>
                         @foreach($item->matakuliah->jadwalKuliahs as $jadwal)

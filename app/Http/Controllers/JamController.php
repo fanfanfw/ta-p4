@@ -18,6 +18,7 @@ class JamController extends Controller
         return view('jam.index', [
             'jam' => Jam::latest()->get(),
             'active' => 'jam',
+            'title' => 'Jam Kelas'
         ]);
     }
 

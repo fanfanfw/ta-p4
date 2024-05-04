@@ -25,14 +25,14 @@
         <!-- small card -->
         <div class="small-box bg-info">
           <div class="inner">
-            <h3>150</h3>
+            <h3>{{ $totalDosen }}</h3>
 
             <p>Dosen</p>
           </div>
           <div class="icon">
             <i class="fas fa-user-friends"></i>
           </div>
-          <a href="#" class="small-box-footer">
+          <a href="/user" class="small-box-footer">
             More info <i class="fas fa-arrow-circle-right"></i>
           </a>
         </div>
@@ -42,14 +42,14 @@
         <!-- small card -->
         <div class="small-box bg-success">
           <div class="inner">
-            <h3>53</h3>
+            <h3>{{ $totalMatakuliah }}</h3>
 
             <p>MataKuliah</p>
           </div>
           <div class="icon">
             <i class="fas fa-book"></i>
           </div>
-          <a href="#" class="small-box-footer">
+          <a href="/matakuliah" class="small-box-footer">
             More info <i class="fas fa-arrow-circle-right"></i>
           </a>
         </div>
@@ -59,14 +59,14 @@
         <!-- small card -->
         <div class="small-box bg-warning">
           <div class="inner">
-            <h3>44</h3>
+            <h3>{{ $totalProgramStudi }}</h3>
 
             <p>Program Studi</p>
           </div>
           <div class="icon">
             <i class="fas fa-thumbtack"></i>
           </div>
-          <a href="#" class="small-box-footer">
+          <a href="/program" class="small-box-footer">
             More info <i class="fas fa-arrow-circle-right"></i>
           </a>
         </div>
@@ -77,14 +77,14 @@
         <!-- small card -->
         <div class="small-box bg-info">
           <div class="inner">
-            <h3>44</h3>
+            <h3>{{ $totalMahasiswa }}</h3>
 
             <p>Mahasiswa</p>
           </div>
           <div class="icon">
             <i class="fas fa-user-plus"></i>
           </div>
-          <a href="#" class="small-box-footer">
+          <a href="/user" class="small-box-footer">
             More info <i class="fas fa-arrow-circle-right"></i>
           </a>
         </div>
@@ -94,14 +94,14 @@
         <!-- small card -->
         <div class="small-box bg-success">
           <div class="inner">
-            <h3>65</h3>
+            <h3>{{ $totalRuang }}</h3>
 
             <p>Ruang</p>
           </div>
           <div class="icon">
             <i class="fas fa-door-open"></i>
           </div>
-          <a href="#" class="small-box-footer">
+          <a href="/ruangan" class="small-box-footer">
             More info <i class="fas fa-arrow-circle-right"></i>
           </a>
         </div>
@@ -110,14 +110,14 @@
         <!-- small card -->
         <div class="small-box bg-danger">
           <div class="inner">
-            <h3>65</h3>
+            <h3>{{ $totalKelas }}</h3>
 
             <p>Kelas</p>
           </div>
           <div class="icon">
             <i class="fas fa-chalkboard"></i>
           </div>
-          <a href="#" class="small-box-footer">
+          <a href="/kelas" class="small-box-footer">
             More info <i class="fas fa-arrow-circle-right"></i>
           </a>
         </div>
@@ -126,58 +126,7 @@
   <!-- Main content -->
   <section class="content">
     
-    <!-- Default box -->
-    <div class="card">
-      <div class="card-header">
-        <h3 class="card-title">Title</h3>
-
-        <div class="card-tools">
-          <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-            <i class="fas fa-minus"></i>
-          </button>
-          <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-            <i class="fas fa-times"></i>
-          </button>
-        </div>
-      </div>
-      
-        <div class="card-body">
-            <table id="example1" class="table table-bordered table-hover">
-                <thead>
-                    <tr>
-                        <th>Jam</th>
-                        <th>Senin</th>
-                        <th>Selasa</th>
-                        <th>Rabu</th>
-                        <th>Kamis</th>
-                        <th>Jumat</th>
-                        <th>Sabtu</th>
-                        <th>Minggu</th>
-                    </tr>
-                </thead>
-                <tbody>
-                  {{-- @foreach ($jam as $item)
-                  <tr>
-                      <td>{{ $item->name }}</td>
-                      @foreach ($hari as $hariItem)
-                      @php
-                          $jadwalKuliah = $jadwal->where('hari_id', $hariItem->id)->where('jam_id', $item->id)->first();
-                      @endphp
-                  <td>{{ $jadwalKuliah ? $jadwalKuliah->matakuliah->name : '' }} </br> {{ $jadwalKuliah ? $jadwalKuliah->matakuliah->namadosen->name : '' }} </br> {{ $jadwalKuliah ? $jadwalKuliah->ruangan->name : '' }}</td>
-                  @endforeach
-                  </tr>
-                  @endforeach --}}
-              </tbody>
-            </table>
-        </div>
-    </div>
     
-      <!-- /.card-body -->
-      <div class="card-footer">
-        Footer
-      </div>
-      <!-- /.card-footer-->
-    </div>
     <!-- /.card -->
 
   </section>

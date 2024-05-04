@@ -5,18 +5,8 @@
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="/admin" class="nav-link">Home</a>
-      </li>
-      
     </ul>
-    <ul class="navbar-nav">
-      
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="/admin" class="nav-link">Home</a>
-      </li>
-      
-    </ul>
+    
    
   </nav>
   <!-- /.navbar -->
@@ -24,7 +14,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="../../index3.html" class="brand-link">
+    <a href="/" class="brand-link">
       <img src="{{ asset('lte/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">AdminLTE 3</span>
     </a>
@@ -163,7 +153,7 @@
       {{-- Mahasiswa --}}
       @if(auth()->check() && auth()->user()->role == 'mahasiswa')
               <li class="nav-item">
-                  <a href="/mahasiswa/matakuliah" class="nav-link">
+                  <a href="/mahasiswa/matakuliah" class="nav-link {{ ($active === "matakuliahmhs") ? 'active' : '' }}">
                       <i class="nav-icon fas fa-book"></i>
                       <p>
                           Matakuliah
@@ -172,16 +162,16 @@
               </li>
       @endif
 
-      {{-- @if(auth()->check() && auth()->user()->role == 'dosen')
+      @if(auth()->check() && auth()->user()->role == 'dosen')
               <li class="nav-item">
-                  <a href="/pages/dosen/matakuliah" class="nav-link">
+                  <a href="/dosen/matakuliah" class="nav-link {{ ($active === "matakuliahdsn") ? 'active' : '' }}">
                       <i class="nav-icon fas fa-book"></i>
                       <p>
                           Matakuliah
                       </p>
                   </a>
               </li>
-      @endif  --}}
+      @endif
 
       <li class="nav-item mt-5">
         <a href="/logout" class="nav-link">

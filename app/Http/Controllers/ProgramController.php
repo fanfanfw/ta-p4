@@ -17,6 +17,7 @@ class ProgramController extends Controller
         return view('program.index', [
             'program' => ProgramStudi::latest()->get(),
             'active' => 'program',
+            'title' => 'Program Studi'
         ]);
     }
 

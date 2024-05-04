@@ -26,14 +26,7 @@
       <div class="card-header">
         <h3 class="card-title">Matakuliah yang Diajar</h3>
         
-        <div class="card-tools">
-          <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-            <i class="fas fa-minus"></i>
-          </button>
-          <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-            <i class="fas fa-times"></i>
-          </button>
-        </div>
+       
       </div>
       <div class="card-body">
         <section class="content">
@@ -56,45 +49,47 @@
                       <option value="Semua">Semua</option>
                     </select>
                   </div>
+                  {{-- <div class="card-tools">
+                    
+                    
+                    
+                    <div class="input-group input-group-sm" style="width: 150px;">
+                      <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+  
+                      <div class="input-group-append">
+                        <button type="submit" class="btn btn-default">
+                          <i class="fas fa-search"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div> --}}
                   <table id="semester" name="semester" class="table table-bordered table-hover">
-                    <thead>
+                      <thead>
                           <tr>
                               <th>No</th>
                               <th>Kode Matakuliah</th>
                               <th>Nama Matakuliah</th>
+                              <th>Nama Dosen</th>
                               <th>SKS</th>
                               <th>Semester</th>
                               <th>Program Studi</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            @php
-                        $counter = 1
-                        @endphp
-                        @foreach ($usermatakuliah as $matakuliah)
-                        @if ($matakuliah->usermatakuliah->semester == '1')
-                                  <tr>
-                                      <td>
-                                        {{ $counter++ }}
-                                      </td>
-                                      <td>
-                                           {{ $matakuliah->usermatakuliah->kode_matakuliah }}
-                                        </td>
-                                        <td>
-                                            {{ $matakuliah->usermatakuliah->name }}
-                                         </td>
-                                         <td>
-                                             {{ $matakuliah->usermatakuliah->sks }}
-                                            </td>
-                                            <td>
-                                                {{ $matakuliah->usermatakuliah->semester }}
-                                            </td>
-                                            <td>
-                                               {{ $matakuliah->usermatakuliah->programStudi->name }}
-                                            </td>
-                                    </tr>
-                            @endif
-                          @endforeach
+                          </tr>
+                      </thead>
+                      <tbody>
+                        @foreach ($userMatakuliah as $item)
+                        
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $item->matakuliah->kode_matakuliah }}</td>
+                            <td>{{ $item->matakuliah->name }}</td>
+                            <td>{{ $item->matakuliah->namadosen->name }}</td>
+                            <td>{{ $item->matakuliah->sks }}</td>
+                            <td>{{ $item->matakuliah->semester }}</td>
+                            <td>{{ $item->matakuliah->programStudi->name }}</td>
+                        </tr>
+                    @endforeach
+                    
                       </tbody>
                   </table>
                 {{-- </div> --}}
@@ -131,7 +126,7 @@
         var rows = document.querySelectorAll('#semester tbody tr');
     
         rows.forEach(function(row) {
-            var semester = row.querySelector('td:nth-child(5)').textContent.trim();
+            var semester = row.querySelector('td:nth-child(6)').textContent.trim();
             if (semester === selectedSemester || selectedSemester === 'Semua') {
                 row.style.display = '';
             } else {
@@ -140,5 +135,4 @@
         });
     });
     </script>
-
   @endsection

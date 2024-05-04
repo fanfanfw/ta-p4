@@ -18,7 +18,7 @@ class RuanganController extends Controller
         return view('ruangan.index', [
             'ruangan' => Ruangan::latest()->get(),
             'active' => 'ruangan',
-            
+            'title' => 'Ruangan'
         ]);
     }
 

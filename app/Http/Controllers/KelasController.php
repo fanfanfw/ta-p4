@@ -18,6 +18,7 @@ class KelasController extends Controller
         return view('kelas.index', [
             'kelas' => Kelas::latest()->get(),
             'active' => 'kelas',
+            'title' => 'Kelas'
         ]);
     }
 

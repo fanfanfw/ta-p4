@@ -14,56 +14,53 @@ use Illuminate\Http\Request;
 class MahasiswaController extends Controller
 {
     public function index()
-    {
-        $userid = Auth::id();
-    $userJadwalKuliah = UserJadwalKuliah::where('user_id', $userid)->pluck('jadwal_kuliah_id')->toArray();
+{
+    $userid = Auth::id();
+    $userMatakuliahIds = UserMatakuliah::where('user_id', $userid)->pluck('matakuliah_id');
+    $usermatakuliah = Matakuliah::whereIn('id', $userMatakuliahIds)->get();
+    // Ambil jadwal kuliah yang terkait dengan matakuliah yang diambil oleh pengguna
+    $jadwal = JadwalKuliah::whereIn('matakuliah_id', $userMatakuliahIds)
+        ->with(['matakuliah', 'matakuliah.namaDosen', 'matakuliah.programStudi'])
+        ->get();
 
-    // Ambil jadwal kuliah yang terkait dengan pengguna
-    $jadwal = JadwalKuliah::whereIn('id', $userJadwalKuliah)->with(['matakuliah', 'ruangan', 'hari', 'kelas', 'jam'])->get();
     $hari = Hari::all();
     $jam = Jam::all();
-    // Kemudian kirim data jadwal ke tampilan
+
     return view('mahasiswa.dashboard', [
         'jadwal' => $jadwal,
         'jam' => $jam,
         'hari' => $hari,
-    'active' => $jadwal
+        'active' => 'dashboard',
+        'title' => 'Dashboard',
+        'userMatakuliah' => $usermatakuliah
     ]);
+}
+
+public function matakuliah(Request $request)
+{
+    $userid = Auth::id();
+    $semester = $request->input('semester');
+
+    // Ambil matakuliah yang diambil oleh pengguna
+    $userMatakuliah = UserMatakuliah::where('user_id', $userid)
+    ->with('matakuliah.jadwalKuliahs') // ini benar
+    ->get();
+
+    $matakuliah = Matakuliah::all();
+
+    // Filter berdasarkan semester jika bukan "Semua"
+    if ($semester != 'Semua') {
+        $userMatakuliah = $userMatakuliah->filter(function ($um) use ($semester) {
+            return $um->matakuliah->jadwalKuliahs->first()->semester == $semester;
+        });
     }
 
-    public function matakuliah(Request $request)
-    {
-        $userid = Auth::id();
-        $semester = $request->input('semester');
-    
-        $userjadwalkuliah  = UserJadwalKuliah::where('user_id', $userid)->with('jadwalkuliah.matakuliah')
-        ->get()
-        ->flatMap(function ($userjadwalkuliah){
-            return $userjadwalkuliah->jadwalKuliah;
-        })
-        ->groupBy('matakuliah_id');
-        
-        $matakuliah = Matakuliah::all();
-    
-        // Jika yang dipilih adalah "Semua", tampilkan semua data
-        if ($semester == 'Semua') {
-            return view('mahasiswa.matakuliah', [
-                'usermatakuliah' => $userjadwalkuliah,
-                'active' => $userjadwalkuliah,
-                'matakuliah' => $matakuliah
-            ]);
-        } else {
-            // Jika tidak, saring data berdasarkan semester yang dipilih
-            $userjadwalkuliah = $userjadwalkuliah->filter(function ($userjadwal) use ($semester) {
-                return $userjadwal->jadwalkuliah->semester == $semester;
-            });
-    
-            return view('mahasiswa.matakuliah', [
-                'userjadwal' => $userjadwalkuliah,
-                'active' => $userjadwalkuliah,
-                'matakuliah' => $matakuliah
-            ]);
-        }
-    }
+    return view('mahasiswa.matakuliah', [
+        'userMatakuliah' => $userMatakuliah,
+        'matakuliah' => $matakuliah,
+        'title' => 'Matakuliah',
+        'active' => 'matakuliahmhs',
+    ]);
+}
     
 }

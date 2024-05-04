@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
-use App\Models\UserJadwalKuliah;
 use App\Models\UserMatakuliah;
+use App\Models\Matakuliah;
+use App\Models\JadwalKuliah;
+use App\Models\Hari;
+use App\Models\Jam;
 use Illuminate\Http\Request;
 
 class DosenController extends Controller
@@ -12,17 +15,50 @@ class DosenController extends Controller
     public function index()
     {
         $userid = Auth::id();
-
-        $jadwalKuliahs = UserJadwalKuliah::where('user_id', $userid)->with('jadwalkuliah')->get();
-
-                return view('pages.dosen.dashboard', ['jadwalkuliah' => $jadwalKuliahs]);
+        $userMatakuliahIds = UserMatakuliah::where('user_id', $userid)->pluck('matakuliah_id');
+        $usermatakuliah = Matakuliah::whereIn('id', $userMatakuliahIds)->get();
+        // Ambil jadwal kuliah yang terkait dengan matakuliah yang diambil oleh pengguna
+        $jadwal = JadwalKuliah::whereIn('matakuliah_id', $userMatakuliahIds)
+            ->with(['matakuliah', 'matakuliah.namaDosen', 'matakuliah.programStudi'])
+            ->get();
+    
+        $hari = Hari::all();
+        $jam = Jam::all();
+    
+        return view('dosen.dashboard', [
+            'jadwal' => $jadwal,
+            'jam' => $jam,
+            'hari' => $hari,
+            'active' => 'dashboard',
+            'title' => 'Dashboard',
+            'userMatakuliah' => $usermatakuliah
+        ]);
     }
-    public function matakuliah()
+    
+    public function matakuliah(Request $request)
     {
         $userid = Auth::id();
-
-        $usermatakuliah = UserMatakuliah::where('user_id', $userid)->with('usermatakuliah')->get();
-
-        return view('pages.dosen.matakuliah', ['usermatakuliah' => $usermatakuliah]);
+        $semester = $request->input('semester');
+    
+        // Ambil matakuliah yang diambil oleh pengguna
+        $userMatakuliah = UserMatakuliah::where('user_id', $userid)
+        ->with('matakuliah.jadwalKuliahs') // ini benar
+        ->get();
+    
+        $matakuliah = Matakuliah::all();
+    
+        // Filter berdasarkan semester jika bukan "Semua"
+        if ($semester != 'Semua') {
+            $userMatakuliah = $userMatakuliah->filter(function ($um) use ($semester) {
+                return $um->matakuliah->jadwalKuliahs->first()->semester == $semester;
+            });
+        }
+    
+        return view('dosen.matakuliah', [
+            'userMatakuliah' => $userMatakuliah,
+            'matakuliah' => $matakuliah,
+            'title' => 'Matakuliah',
+            'active' => 'matakuliahdsn',
+        ]);
     }
 }
