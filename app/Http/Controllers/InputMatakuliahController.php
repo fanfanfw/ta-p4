@@ -28,7 +28,7 @@ class InputMatakuliahController extends Controller
                 'user' => $user,
                 'kelas' => $kelas,
                 'students' => $students,
-                'active' => 'input-matakulih',
+                'active' => 'input-matakuliah',
                 'matakuliah' => $matakuliah,
                 'title' => 'Input Matakuliah'
             ]);

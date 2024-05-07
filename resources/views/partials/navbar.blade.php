@@ -130,7 +130,7 @@
 
       @if(auth()->check() && auth()->user()->role == 'admin')
               <li class="nav-item">
-                  <a href="/input-matakuliah" class="nav-link {{ ($active === "input-matakukliah") ? 'active' : '' }}">
+                  <a href="/input-matakuliah" class="nav-link {{ ($active === "input-matakuliah") ? 'active' : '' }}">
                       <i class="nav-icon fas fa-pen"></i>
                       <p>
                        Matakuliah Mahasiswa
@@ -141,7 +141,7 @@
 
       @if(auth()->check() && auth()->user()->role == 'admin')
               <li class="nav-item">
-                  <a href="/input-matakuliah-dosen" class="nav-link {{ ($active === "input-matakukliah-dosen") ? 'active' : '' }}">
+                  <a href="/input-matakuliah-dosen" class="nav-link {{ ($active === "input-matakuliah-dosen") ? 'active' : '' }}">
                       <i class="nav-icon fas fa-pen"></i>
                       <p>
                        Matakuliah Dosen
