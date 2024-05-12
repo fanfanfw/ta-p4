@@ -38,6 +38,12 @@ class DatabaseSeeder extends Seeder
                 'role' => 'mahasiswa'
             ],
             [
+                'name' => 'Rizki Paulus',
+                'username' => '1222601',
+                'password' => bcrypt('123456'),
+                'role' => 'mahasiswa'
+            ],
+            [
                 'name' => 'Mina Ismu',
                 'username' => '12226244',
                 'password' => bcrypt('123456'),
